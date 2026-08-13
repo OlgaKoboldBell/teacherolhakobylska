@@ -14,15 +14,15 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5388275141105129"
      crossorigin="anonymous"></script>
-<title>Інтерактивна карта історичних подій — Ольга Кобильська, вчитель громадянської та історичної освітньої галузі</title>
-<meta name="description" content="Інтерактивна схематична карта України з позначеними головними історичними подіями: наведіть на область чи місто, щоб дізнатися, що там відбулося.">
-<meta name="keywords" content="інтерактивна карта України, історичні події на карті, карта України для уроків історії, історична карта онлайн, просторова компетентність історія">
+<title>Інтерактивна карта історичних пам'яток України — Ольга Кобильська</title>
+<meta name="description" content="Інтерактивна карта України з видатними історичними та культурними пам'ятками. Екскурсії, мандрівки та формування життєвих і предметних компетентностей учнів.">
+<meta name="keywords" content="інтерактивна карта України, історичні пам'ятки, шкільні екскурсії, просторова компетентність, історія України, культурна спадщина">
 <meta name="author" content="Ольга Юріївна Кобильська">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="karta-ukrayiny.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Інтерактивна карта історичних подій — Ольга Кобильська, вчитель громадянської та історичної освітньої галузі">
-<meta property="og:description" content="Інтерактивна схематична карта України з позначеними головними історичними подіями: наведіть на область чи місто, щоб дізнатися, що там відбулося.">
+<meta property="og:title" content="Інтерактивна карта історичних пам'яток України — Ольга Кобильська">
+<meta property="og:description" content="Інтерактивна карта України з видатними історичними та культурними пам'ятками. Екскурсії, мандрівки та формування життєвих і предметних компетентностей учнів.">
 <meta property="og:image" content="olga-kobylska-foto.jpg">
 <meta property="og:locale" content="uk_UA">
 <meta name="twitter:card" content="summary_large_image">
@@ -32,6 +32,237 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
+<style>
+/* Стилізація під оригінальні Google Maps */
+.interactive-map-container {
+  position: relative;
+  width: 100%;
+  border: 1px solid #bdc1c6;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #aadaff; /* Колір морів/водойм Google Maps */
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  margin-top: 20px;
+}
+
+.svg-viewport {
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+}
+.svg-viewport:active {
+  cursor: grabbing;
+}
+
+#ukraineSvg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: center center;
+}
+
+/* Сусідні країни (колір суші в Google Maps) */
+.neighbor-country {
+  fill: #e8ece9;
+  stroke: #a2a9b1;
+  stroke-width: 1.2;
+}
+.neighbor-label {
+  font-size: 13px;
+  fill: #5f6368;
+  font-weight: 700;
+  font-family: Roboto, Arial, sans-serif;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+}
+
+/* Контур України (світло-зелена зона) */
+.ukraine-land {
+  fill: #d8f3dc;
+  stroke: #3c4043;
+  stroke-width: 2;
+}
+
+/* Річка Дніпро та водойми */
+.river-dnipro {
+  fill: none;
+  stroke: #aadaff;
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Мітки міст */
+.city-marker {
+  cursor: pointer;
+}
+.city-dot {
+  fill: #ffffff;
+  stroke: #202124;
+  stroke-width: 2.5;
+  transition: transform 0.2s ease, fill 0.2s ease, stroke 0.2s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.city-dot-capital {
+  fill: #ea4335;
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.city-label {
+  font-size: 11px;
+  font-weight: 700;
+  fill: #202124;
+  font-family: Roboto, Arial, sans-serif;
+  pointer-events: none;
+  transition: transform 0.2s ease, fill 0.2s ease;
+  transform-box: fill-box;
+  transform-origin: left center;
+  text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 1px -1px 2px #ffffff, -1px 1px 2px #ffffff;
+}
+
+/* Hover-ефект плавного збільшення підпису */
+.city-marker:hover .city-dot {
+  transform: scale(1.6);
+  fill: #ea4335;
+  stroke: #ffffff;
+}
+.city-marker:hover .city-label {
+  transform: scale(1.3);
+  fill: #1a73e8;
+}
+
+/* Елементи керування масштабом (внизу праворуч) */
+.map-controls-bottom-right {
+  position: absolute;
+  bottom: 24px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 10;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+.map-ctrl-btn {
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border: none;
+  color: #5f6368;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s, color 0.15s;
+}
+.map-ctrl-btn:not(:last-child) {
+  border-bottom: 1px solid #dadce0;
+}
+.map-ctrl-btn:hover {
+  background-color: #f1f3f4;
+  color: #202124;
+}
+
+/* Інформаційне модальне вікно */
+.map-modal {
+  display: none;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 320px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  padding: 18px;
+  z-index: 20;
+  border-top: 4px solid #1a73e8;
+  animation: modalFade 0.2s ease-out;
+}
+@keyframes modalFade {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.map-modal h3 {
+  margin: 0 0 6px 0;
+  color: #1a73e8;
+  font-size: 1.2rem;
+}
+.map-modal p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #3c4043;
+  margin-bottom: 10px;
+}
+.map-modal ul {
+  margin: 4px 0 0 0;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  color: #475569;
+}
+.map-modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #70757a;
+}
+.map-modal .close-btn:hover {
+  color: #202124;
+}
+
+/* Довідник областей */
+.oblast-accordion {
+  margin-top: 30px;
+}
+.oblast-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.oblast-card h3 {
+  margin-top: 0;
+  color: var(--navy, #1e3a8a);
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 8px;
+}
+.city-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  margin-top: 12px;
+}
+.city-item {
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 3px solid #3b82f6;
+}
+.city-item h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  color: #0f172a;
+}
+.city-item ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.88rem;
+  color: #475569;
+}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -72,100 +303,579 @@
 
 <div class="container">
   <p class="crumbs"><a href="index.html">Головна</a> / Інтерактивна карта України</p>
-  <div class="section-title"><span class="num">🗺️</span><h1 style="margin:0;">Інтерактивна карта: історія на карті України</h1></div>
-  <p class="lede">Наведіть курсор (або торкніться на телефоні) на область — вона підсвітиться; наведіть
-  на назву населеного пункту — з'явиться інформація про історичну подію, яка там відбулася.
-  Карта <strong>схематична</strong> (не в масштабі та без точних кордонів) і створена для навчальних цілей —
-  формування просторової та хронологічної компетентностей учнів.</p>
-
-  <div class="map-wrap">
-    <svg id="ukraineMap" viewBox="0 0 780 530" xmlns="http://www.w3.org/2000/svg" role="img"
-         aria-label="Схематична карта областей України з історичними подіями">
-      <g class="oblast-group" tabindex="0"><title>Закарпатська область</title><rect class="oblast" data-name="Закарпатська" x="30" y="330" width="90" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="75.0" y="357.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Закарпатська</text></g>
-<g class="oblast-group" tabindex="0"><title>Івано-Франківська область</title><rect class="oblast" data-name="Івано-Франківська" x="130" y="285" width="85" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="172.5" y="312.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Івано-Франківська</text></g>
-<g class="oblast-group" tabindex="0"><title>Львівська область</title><rect class="oblast" data-name="Львівська" x="120" y="205" width="95" height="60" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="167.5" y="235.0" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Львівська</text></g>
-<g class="oblast-group" tabindex="0"><title>Волинська область</title><rect class="oblast" data-name="Волинська" x="125" y="105" width="90" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="170.0" y="132.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Волинська</text></g>
-<g class="oblast-group" tabindex="0"><title>Рівненська область</title><rect class="oblast" data-name="Рівненська" x="220" y="110" width="90" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="265.0" y="137.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Рівненська</text></g>
-<g class="oblast-group" tabindex="0"><title>Тернопільська область</title><rect class="oblast" data-name="Тернопільська" x="215" y="215" width="80" height="50" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="255.0" y="240.0" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Тернопільська</text></g>
-<g class="oblast-group" tabindex="0"><title>Чернівецька область</title><rect class="oblast" data-name="Чернівецька" x="215" y="300" width="80" height="45" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="255.0" y="322.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Чернівецька</text></g>
-<g class="oblast-group" tabindex="0"><title>Хмельницька область</title><rect class="oblast" data-name="Хмельницька" x="300" y="205" width="85" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="342.5" y="232.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Хмельницька</text></g>
-<g class="oblast-group" tabindex="0"><title>Вінницька область</title><rect class="oblast" data-name="Вінницька" x="300" y="270" width="95" height="60" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="347.5" y="300.0" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Вінницька</text></g>
-<g class="oblast-group" tabindex="0"><title>Житомирська область</title><rect class="oblast" data-name="Житомирська" x="320" y="140" width="95" height="60" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="367.5" y="170.0" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Житомирська</text></g>
-<g class="oblast-group" tabindex="0"><title>Київська область</title><rect class="oblast" data-name="Київська" x="400" y="120" width="95" height="60" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="447.5" y="150.0" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Київська</text></g>
-<g class="oblast-group" tabindex="0"><title>Чернігівська область</title><rect class="oblast" data-name="Чернігівська" x="415" y="55" width="100" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="465.0" y="82.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Чернігівська</text></g>
-<g class="oblast-group" tabindex="0"><title>Сумська область</title><rect class="oblast" data-name="Сумська" x="510" y="80" width="95" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="557.5" y="107.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Сумська</text></g>
-<g class="oblast-group" tabindex="0"><title>Полтавська область</title><rect class="oblast" data-name="Полтавська" x="480" y="195" width="95" height="60" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="527.5" y="225.0" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Полтавська</text></g>
-<g class="oblast-group" tabindex="0"><title>Черкаська область</title><rect class="oblast" data-name="Черкаська" x="380" y="220" width="95" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="427.5" y="247.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Черкаська</text></g>
-<g class="oblast-group" tabindex="0"><title>Кіровоградська область</title><rect class="oblast" data-name="Кіровоградська" x="395" y="285" width="95" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="442.5" y="312.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Кіровоградська</text></g>
-<g class="oblast-group" tabindex="0"><title>Одеська область</title><rect class="oblast" data-name="Одеська" x="300" y="375" width="110" height="65" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="355.0" y="407.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Одеська</text></g>
-<g class="oblast-group" tabindex="0"><title>Миколаївська область</title><rect class="oblast" data-name="Миколаївська" x="410" y="370" width="90" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="455.0" y="397.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Миколаївська</text></g>
-<g class="oblast-group" tabindex="0"><title>Херсонська область</title><rect class="oblast" data-name="Херсонська" x="470" y="405" width="95" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="517.5" y="432.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Херсонська</text></g>
-<g class="oblast-group" tabindex="0"><title>Запорізька область</title><rect class="oblast" data-name="Запорізька" x="540" y="320" width="95" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="587.5" y="347.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Запорізька</text></g>
-<g class="oblast-group" tabindex="0"><title>Дніпропетровська область</title><rect class="oblast" data-name="Дніпропетровська" x="510" y="250" width="100" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="560.0" y="277.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Дніпропетровська</text></g>
-<g class="oblast-group" tabindex="0"><title>Харківська область</title><rect class="oblast" data-name="Харківська" x="565" y="150" width="100" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="615.0" y="177.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Харківська</text></g>
-<g class="oblast-group" tabindex="0"><title>Донецька область</title><rect class="oblast" data-name="Донецька" x="605" y="280" width="95" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="652.5" y="307.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Донецька</text></g>
-<g class="oblast-group" tabindex="0"><title>Луганська область</title><rect class="oblast" data-name="Луганська" x="660" y="230" width="90" height="55" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="705.0" y="257.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Луганська</text></g>
-<g class="oblast-group" tabindex="0"><title>Автономна Республіка Крим область</title><rect class="oblast" data-name="Автономна Республіка Крим" x="470" y="460" width="110" height="45" rx="8" style="transform-box:fill-box;transform-origin:center;"/><text x="525.0" y="482.5" text-anchor="middle" dominant-baseline="middle" style="font-size:7px;fill:#5b4b23;pointer-events:none;">Автономна</text></g>
-
-      <g class="city-group" tabindex="0" data-name="Київ" data-date="988 р. / 1991 р." data-event="988 р. — Хрещення Русі князем Володимиром Великим; 1991 р. — проголошення незалежності України."><title>Київ: 988 р. — Хрещення Русі князем Володимиром Великим; 1991 р. — проголошення незалежності України.</title><circle class="city-dot" cx="447" cy="150" r="4.2"/><text class="city-label" x="453" y="153">Київ</text></g>
-<g class="city-group" tabindex="0" data-name="Переяслав" data-date="1654 р." data-event="Переяславська рада — угода гетьмана Богдана Хмельницького з московським царством."><title>Переяслав: Переяславська рада — угода гетьмана Богдана Хмельницького з московським царством.</title><circle class="city-dot" cx="470" cy="175" r="4.2"/><text class="city-label" x="476" y="178">Переяслав</text></g>
-<g class="city-group" tabindex="0" data-name="Чигирин" data-date="сер. XVII ст." data-event="Гетьманська столиця Богдана Хмельницького, центр Української козацької держави."><title>Чигирин: Гетьманська столиця Богдана Хмельницького, центр Української козацької держави.</title><circle class="city-dot" cx="420" cy="255" r="4.2"/><text class="city-label" x="426" y="258">Чигирин</text></g>
-<g class="city-group" tabindex="0" data-name="Холодний Яр" data-date="1918–1922 рр." data-event="Осередок повстанського руху — гайдамаки, а згодом отамани, що боролися проти більшовиків."><title>Холодний Яр: Осередок повстанського руху — гайдамаки, а згодом отамани, що боролися проти більшовиків.</title><circle class="city-dot" cx="430" cy="265" r="4.2"/><text class="city-label" x="436" y="268">Холодний Яр</text></g>
-<g class="city-group" tabindex="0" data-name="Умань" data-date="1768 р." data-event="Коліївщина — масштабне повстання гайдамаків проти польської шляхти."><title>Умань: Коліївщина — масштабне повстання гайдамаків проти польської шляхти.</title><circle class="city-dot" cx="370" cy="300" r="4.2"/><text class="city-label" x="376" y="303">Умань</text></g>
-<g class="city-group" tabindex="0" data-name="Батурин" data-date="1708 р." data-event="Зруйнування гетьманської столиці військами Меншикова після переходу Мазепи на бік шведів."><title>Батурин: Зруйнування гетьманської столиці військами Меншикова після переходу Мазепи на бік шведів.</title><circle class="city-dot" cx="480" cy="95" r="4.2"/><text class="city-label" x="486" y="98">Батурин</text></g>
-<g class="city-group" tabindex="0" data-name="Запорізька Січ (о. Хортиця)" data-date="XVI–XVIII ст." data-event="Центр українського козацтва — школа військової звитяги та зародок української державності."><title>Запорізька Січ (о. Хортиця): Центр українського козацтва — школа військової звитяги та зародок української державності.</title><circle class="city-dot" cx="565" cy="330" r="4.2"/><text class="city-label" x="571" y="333">Запорізька Січ (о. Хортиця)</text></g>
-<g class="city-group" tabindex="0" data-name="Львів" data-date="1256 р." data-event="Засновано князем Данилом Галицьким; центр Галицько-Волинської держави."><title>Львів: Засновано князем Данилом Галицьким; центр Галицько-Волинської держави.</title><circle class="city-dot" cx="155" cy="235" r="4.2"/><text class="city-label" x="161" y="238">Львів</text></g>
-<g class="city-group" tabindex="0" data-name="Кам'янець-Подільський" data-date="XIV–XVIII ст." data-event="Могутня фортеця, центр Подільського воєводства, оборона від турецько-татарських нападів."><title>Кам'янець-Подільський: Могутня фортеця, центр Подільського воєводства, оборона від турецько-татарських нападів.</title><circle class="city-dot" cx="330" cy="235" r="4.2"/><text class="city-label" x="336" y="238">Кам'янець-Подільський</text></g>
-<g class="city-group" tabindex="0" data-name="Полтава" data-date="1709 р." data-event="Полтавська битва — вирішальна подія Північної війни, що вплинула на подальшу долю Гетьманщини."><title>Полтава: Полтавська битва — вирішальна подія Північної війни, що вплинула на подальшу долю Гетьманщини.</title><circle class="city-dot" cx="520" cy="220" r="4.2"/><text class="city-label" x="526" y="223">Полтава</text></g>
-<g class="city-group" tabindex="0" data-name="Крути" data-date="1918 р." data-event="Бій під Крутами — оборона молодими українцями підступів до Києва."><title>Крути: Бій під Крутами — оборона молодими українцями підступів до Києва.</title><circle class="city-dot" cx="460" cy="95" r="4.2"/><text class="city-label" x="466" y="98">Крути</text></g>
-<g class="city-group" tabindex="0" data-name="Світловодськ" data-date="—" data-event="Рідне місто автора сайту — Кіровоградська область, де багато десятиліть навчаються учні Ліцею №4 «Обрій»."><title>Світловодськ: Рідне місто автора сайту — Кіровоградська область, де багато десятиліть навчаються учні Ліцею №4 «Обрій».</title><circle class="city-dot" cx="430" cy="300" r="4.2"/><text class="city-label" x="436" y="303">Світловодськ</text></g>
-
-    </svg>
-
-    <div class="map-legend">
-      <span><span class="legend-dot"></span> Населений пункт з історичною подією</span>
-      <span>▭ Область (умовне розташування, наведіть для підсвічування)</span>
+  <div class="section-title"><span class="num">🗺️</span><h1 style="margin:0;">Екскурсії та інтерактивна карта пам'яток України</h1></div>
+  
+  <section style="margin-top:20px;">
+    <h2>Значення екскурсій та мандрівок у навчанні історії</h2>
+    <p class="lede">
+      Екскурсії та краєзнавчі походи історичними й культурними місцями є важливим складником сучасного освітнього процесу. Вони перетворюють теоретичні знання з підручника на живий, емоційно насичений досвід, перетворюючи історію з набору дат у реальні події та долі людей.
+    </p>
+    
+    <div class="grid cols-2" style="margin-top:20px;">
+      <div class="card" style="cursor:default;">
+        <span class="card-icon">🧭</span>
+        <h3>Просторова та хронологічна компетентності</h3>
+        <p>Безпосередній візит або дослідження картографічних об'єктів допомагає учням орієнтуватися у просторі та часі, уявляти масштаб історичних подій та пов'язувати їх із географічним ландшафтом.</p>
+      </div>
+      <div class="card" style="cursor:default;">
+        <span class="card-icon">💡</span>
+        <h3>Критичне мислення та дослідницькі навички</h3>
+        <p>Аналізуючи пам'ятки архітектури, музейні експонати та меморіали, діти вчаться зіставляти джерела, поставити запитання, шукати причинно-наслідкові зв'язки та формувати власне судження.</p>
+      </div>
+      <div class="card" style="cursor:default;">
+        <span class="card-icon">🏛️</span>
+        <h3>Аксіологічна та громадянська компетентності</h3>
+        <p>Ознайомлення з національною культурною спадщиною виховує повагу до минулого свого народу, сприяє усвідомленню власної ідентичності та формує відповідальність за збереження пам'яток.</p>
+      </div>
+      <div class="card" style="cursor:default;">
+        <span class="card-icon">🤝</span>
+        <h3>Соціальні та життєві навички</h3>
+        <p>Спільні екскурсії сприяють командній співпраці, розвитку комунікативних здібностей, адаптивності та вміти застосовувати здобуті знання в повсякденному житті.</p>
+      </div>
     </div>
-  </div>
+  </section>
+</div>
 
-  <div class="map-info" id="mapInfo" aria-live="polite">
-    <h3>Оберіть точку на карті</h3>
-    <p style="margin:0;color:var(--ink-soft);">Наведіть курсор на позначку населеного пункту, щоб прочитати,
-    яка історична подія там відбулася, або на область, щоб побачити її назву.</p>
-  </div>
+<div class="container"><div class="timeline-rule"></div></div>
 
-  <div class="placeholder-box" style="margin-top:26px;">
-    📥 Карта поповнюється новими подіями та населеними пунктами — особливо тими, що вивчаються
-    у 7–11 класах на уроках історії України.
+<div class="container">
+  <h2>🗺️ Інтерактивна карта пам'яток України</h2>
+  <p>Карту виконано в стилі Google Maps. <strong>Наведіть курсор на будь-яке місто</strong> для збільшення назви та <strong>натисніть на мітку</strong>, щоб дізнатися про пам'ятки міста.</p>
+
+  <div class="interactive-map-container">
+    <div class="svg-viewport" id="mapViewport">
+      <svg id="ukraineSvg" viewBox="0 0 1000 650" xmlns="http://www.w3.org/2000/svg">
+        <!-- Сусідні держави -->
+        <g id="neighbors">
+          <path class="neighbor-country" d="M 0 100 L 150 80 L 170 200 L 120 280 L 0 250 Z" />
+          <text x="50" y="170" class="neighbor-label">ПОЛЬЩА</text>
+
+          <path class="neighbor-country" d="M 0 250 L 120 280 L 100 340 L 0 320 Z" />
+          <text x="15" y="300" class="neighbor-label">СЛОВАЧЧИНА</text>
+
+          <path class="neighbor-country" d="M 0 320 L 100 340 L 150 370 L 0 420 Z" />
+          <text x="20" y="375" class="neighbor-label">УГОРЩИНА</text>
+
+          <path class="neighbor-country" d="M 0 420 L 150 370 L 250 420 L 320 460 L 300 580 L 0 580 Z" />
+          <text x="110" y="490" class="neighbor-label">РУМУНІЯ</text>
+
+          <path class="neighbor-country" d="M 320 460 L 380 410 L 410 460 L 370 520 L 300 580 Z" />
+          <text x="335" y="490" class="neighbor-label">МОЛДОВА</text>
+
+          <path class="neighbor-country" d="M 150 80 L 520 50 L 680 120 L 420 150 L 170 200 Z" />
+          <text x="330" y="105" class="neighbor-label">БІЛОРУСЬ</text>
+
+          <path class="neighbor-country" d="M 680 120 L 1000 60 L 1000 580 L 880 390 L 950 320 L 920 240 L 800 160 Z" />
+          <text x="820" y="200" class="neighbor-label">РОСІЯ</text>
+        </g>
+
+        <!-- Контур України -->
+        <g id="ukraineMap">
+          <path class="ukraine-land" d="M 170 200 L 420 150 L 680 120 L 800 160 L 920 240 L 950 320 L 880 390 L 820 430 L 730 420 L 660 470 L 570 510 L 480 490 L 420 530 L 380 410 L 320 460 L 250 420 L 150 370 L 100 340 L 120 280 Z" />
+          
+          <!-- Дніпро -->
+          <path class="river-dnipro" d="M 520 150 C 490 190, 480 210, 480 220 C 480 260, 550 310, 580 315 C 620 320, 680 360, 700 400 C 680 430, 600 450, 560 465 C 500 480, 480 500, 480 500" />
+        </g>
+
+        <!-- Розширений список міст (27 населених пунктів) -->
+        <g id="cityMarkers">
+          <!-- Київ (Столиця) -->
+          <g class="city-marker" data-id="kyiv" transform="translate(480, 220)">
+            <circle class="city-dot city-dot-capital" r="7" />
+            <text class="city-label" x="12" y="4" style="font-size:13px; fill:#000;">Київ</text>
+          </g>
+
+          <!-- Обласні центри та ключові міста -->
+          <g class="city-marker" data-id="lviv" transform="translate(190, 290)">
+            <circle class="city-dot" r="5" />
+            <text class="city-label" x="9" y="4">Львів</text>
+          </g>
+
+          <g class="city-marker" data-id="lutsk" transform="translate(225, 220)">
+            <circle class="city-dot" r="4.5" />
+            <text class="city-label" x="8" y="4">Луцьк</text>
+          </g>
+
+          <g class="city-marker" data-id="rivne" transform="translate(280, 215)">
+            <circle class="city-dot" r="4.5" />
+            <text class="city-label" x="8" y="4">Рівне</text>
+          </g>
+
+          <g class="city-marker" data-id="zhytomyr" transform="translate(390, 225)">
+            <circle class="city-dot" r="4.5" />
+            <text class="city-label" x="8" y="4">Житомир</text>
+          </g>
+
+          <g class="city-marker" data-id="chernihiv" transform="translate(520, 150)">
+            <circle class="city-dot" r="5" />
+            <text class="city-label" x="9" y="4">Чернігів</text>
+          </g>
+
+          <g class="city-marker" data-id="sumy" transform="translate(650, 160)">
+            <circle class="city-dot" r="4.5" />
+            <text class="city-label" x="8" y="4">Суми</text>
+          </g>
+
+          <g class="city-marker" data-id="kharkiv" transform="translate(760, 240)">
+            <circle class="city-dot" r="5.5" />
+            <text class="city-label" x="9" y="4">Харків</text>
+          </g>
+
+          <g class="city-marker" data-id="poltava" transform="translate(650, 270)">
+            <circle class="city-dot" r="5" />
+            <text class="city-label" x="9" y="4">Полтава</text>
+          </g>
+
+          <g class="city-marker" data-id="dnipro" transform="translate(680, 360)">
+            <circle class="city-dot" r="5.5" />
+            <text class="city-label" x="9" y="4">Дніпро</text>
+          </g>
+
+          <g class="city-marker" data-id="zaporizhzhia" transform="translate(700, 400)">
+            <circle class="city-dot" r="5.5" />
+            <text class="city-label" x="9" y="4">Запоріжжя</text>
+          </g>
+
+          <g class="city-marker" data-id="donetsk" transform="translate(820, 370)">
+            <circle class="city-dot" r="5" />
+            <text class="city-label" x="9" y="4">Донецьк</text>
+          </g>
+
+          <g class="city-marker" data-id="lugansk" transform="translate(890, 310)">
+            <circle class="city-dot" r="5" />
+            <text class="city-label" x="9" y="4">Луганськ</text>
+          </g>
+
+          <g class="city-marker" data-id="kropyvnytskyi" transform="translate(540, 380)">
+            <circle class="city-dot" r="5" />
+            <text class="city-label" x="9" y="4">Кропивницький</text>
+          </g>
+
+          <g class="city-marker" data-id="svitlovodsk" transform="translate(580, 315)">
+            <circle class="city-dot" r="4" />
+            <text class="city-label" x="7" y="4">Світловодськ</text>
+          </g>
+
+          <g class="city-marker" data-id="chyhyryn" transform="translate(550, 330)">
+            <circle class="city-dot" r="4" />
+            <text class="city-label" x="7" y="4">Чигирин</text>
+          </g>
+
+          <g class="city-marker" data-id="uman" transform="translate(450, 360)">
+            <circle class="city-dot" r="4.5" />
+            <text class="city-label" x="8" y="4">Умань</text>
+          </g>
+
+          <g class="city-marker" data-id="vinnytsia" transform="translate(380, 330)">
+            <circle class="city-dot" r="5" />
+            <text class="city-label" x="9" y="4">Вінниця</text>
+          </g>
+
+          <g class="city-marker" data-id="khmelnytskyi" transform="translate(310, 320)">
+            <circle class="city-dot" r="5" />
+            <text class="city-label" x="9" y="4">Хмельницький</text>
+          </g>
+
+          <g class="city-marker" data-id="kamianets" transform="translate(290, 390)">
+            <circle class="city-dot" r="4" />
+            <text class="city-label" x="7" y="4">Кам'янець-Подільський</text>
+          </g>
+
+          <g class="city-marker" data-id="ternopil" transform="translate(250, 320)">
+            <circle class="city-dot" r="4.5" />
+            <text class="city-label" x="8" y="4">Тернопіль</text>
+          </g>
+
+          <g class="city-marker" data-id="ivano-frankivsk" transform="translate(200, 360)">
+            <circle class="city-dot" r="4.5" />
+            <text class="city-label" x="8" y="4">Івано-Франківськ</text>
+          </g>
+
+          <g class="city-marker" data-id="uzhhorod" transform="translate(115, 335)">
+            <circle class="city-dot" r="4.5" />
+            <text class="city-label" x="8" y="4">Ужгород</text>
+          </g>
+
+          <g class="city-marker" data-id="chernivtsi" transform="translate(240, 410)">
+            <circle class="city-dot" r="4.5" />
+            <text class="city-label" x="8" y="4">Чернівці</text>
+          </g>
+
+          <g class="city-marker" data-id="mykolaiv" transform="translate(530, 460)">
+            <circle class="city-dot" r="5" />
+            <text class="city-label" x="9" y="4">Миколаїв</text>
+          </g>
+
+          <g class="city-marker" data-id="kherson" transform="translate(580, 470)">
+            <circle class="city-dot" r="5" />
+            <text class="city-label" x="9" y="4">Херсон</text>
+          </g>
+
+          <g class="city-marker" data-id="odesa" transform="translate(480, 500)">
+            <circle class="city-dot" r="5.5" />
+            <text class="city-label" x="9" y="4">Одеса</text>
+          </g>
+
+          <g class="city-marker" data-id="kryvyi-rih" transform="translate(610, 410)">
+            <circle class="city-dot" r="4.5" />
+            <text class="city-label" x="8" y="4">Кривий Ріг</text>
+          </g>
+
+          <g class="city-marker" data-id="baturyn" transform="translate(600, 180)">
+            <circle class="city-dot" r="4" />
+            <text class="city-label" x="7" y="4">Батурин</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Масштабування (Google Maps style - внизу справа) -->
+    <div class="map-controls-bottom-right">
+      <button class="map-ctrl-btn" id="zoomInBtn" title="Збільшити">+</button>
+      <button class="map-ctrl-btn" id="zoomOutBtn" title="Зменшити">−</button>
+      <button class="map-ctrl-btn" id="zoomResetBtn" title="Скинути" style="font-size:11px;">100%</button>
+    </div>
+
+    <!-- Модальне вікно -->
+    <div class="map-modal" id="cityModal">
+      <button class="close-btn" id="closeModalBtn" aria-label="Закрити">&times;</button>
+      <h3 id="modalTitle">Назва міста</h3>
+      <p id="modalDesc">Опис міста...</p>
+      <strong>Визначні пам'ятки:</strong>
+      <ul id="modalSights"></ul>
+    </div>
   </div>
 </div>
 
-<script>
-(function(){
-  var info = document.getElementById('mapInfo');
-  document.querySelectorAll('#ukraineMap .city-group').forEach(function(g){
-    function show(){
-      var name = g.getAttribute('data-name');
-      var date = g.getAttribute('data-date');
-      var event = g.getAttribute('data-event');
-      info.innerHTML = '<h3>' + name + ' <span style="color:var(--brass);font-family:var(--font-mono);font-size:.85rem;">(' + date + ')</span></h3><p style="margin:0;">' + event + '</p>';
-      document.querySelectorAll('#ukraineMap .city-dot').forEach(function(d){ d.classList.remove('active'); });
-      g.querySelector('.city-dot').classList.add('active');
-    }
-    g.addEventListener('mouseenter', show);
-    g.addEventListener('focus', show);
-    g.addEventListener('click', show);
-  });
-  document.querySelectorAll('#ukraineMap .oblast-group').forEach(function(g){
-    function show(){
-      var name = g.querySelector('.oblast').getAttribute('data-name');
-      info.innerHTML = '<h3>' + name + ' область</h3><p style="margin:0;color:var(--ink-soft);">Наведіть на позначку населеного пункту в цій області (якщо вона є на карті), щоб прочитати про історичну подію.</p>';
-    }
-    g.addEventListener('mouseenter', show);
-    g.addEventListener('focus', show);
-  });
-})();
-</script>
+<div class="container"><div class="timeline-rule"></div></div>
+
+<!-- Довідник областей та пам'яток -->
+<section class="section">
+  <div class="container">
+    <h2>🏛️ Довідник пам'яток за областями України</h2>
+    <p class="lede">Алфавітний перелік областей, ключових населених пунктів та їхніх основних історико-культурних пам’яток:</p>
+
+    <div class="oblast-accordion">
+
+      <!-- Вінницька область -->
+      <div class="oblast-card">
+        <h3>Вінницька область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Вінниця</h4>
+            <ul>
+              <li>Музей-садиба М. І. Пирогова</li>
+              <li>Вінницькі Мури (XVII ст.)</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>м. Могилів-Подільський</h4>
+            <ul>
+              <li>Покровська церква</li>
+              <li>Печерний Свято-Ніколаєвський монастир (с. Лядова)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Волинська область -->
+      <div class="oblast-card">
+        <h3>Волинська область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Луцьк</h4>
+            <ul>
+              <li>Замок Любарта (XIV ст.)</li>
+              <li>Кафедральний собор Петропавлівський</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>м. Володимир</h4>
+            <ul>
+              <li>Успенський собор (XII ст.)</li>
+              <li>Василівська ротонда</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Дніпропетровська область -->
+      <div class="oblast-card">
+        <h3>Дніпропетровська область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Дніпро</h4>
+            <ul>
+              <li>Дніпровський національний історичний музей ім. Д. І. Яворницького</li>
+              <li>Преображенський собор</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>м. Новомосковськ</h4>
+            <ul>
+              <li>Троїцький собор (унікальний дерев'яний собор XVIII ст.)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Закарпатська область -->
+      <div class="oblast-card">
+        <h3>Закарпатська область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Ужгород</h4>
+            <ul>
+              <li>Ужгородський замок</li>
+              <li>Музей народної архітектури та побуту</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>м. Мукачево</h4>
+            <ul>
+              <li>Замок «Паланок» (XIV–XVII ст.)</li>
+              <li>Палац Шенборнів (смт Чинадійово)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Запорізька область -->
+      <div class="oblast-card">
+        <h3>Запорізька область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Запоріжжя</h4>
+            <ul>
+              <li>Національний заповідник «Хортиця»</li>
+              <li>Історико-культурний комплекс «Запорозька Січ»</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>смт Мирне</h4>
+            <ul>
+              <li>Національний історико-археологічний заповідник «Кам'яна Могила»</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Івано-Франківська область -->
+      <div class="oblast-card">
+        <h3>Івано-Франківська область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Івано-Франківськ</h4>
+            <ul>
+              <li>Ратуша та майдан Шептицького</li>
+              <li>Колегіальний костел Пресвятої Діви Марії</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>м. Галич</h4>
+            <ul>
+              <li>Національний заповідник «Давній Галич»</li>
+              <li>Церква Успіння Пресвятої Богородиці (с. Крилос)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Київська область та м. Київ -->
+      <div class="oblast-card">
+        <h3>Київська область та м. Київ</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Київ</h4>
+            <ul>
+              <li>Софійський собор та Києво-Печерська лавра (ЮНЕСКО)</li>
+              <li>Золоті ворота, Андріївський узвіз</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>м. Переяслав</h4>
+            <ul>
+              <li>Музей народної архітектури та побуту Середньої Наддніпрянщини</li>
+              <li>Вознесенський собор</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>м. Біла Церква</h4>
+            <ul>
+              <li>Дендропарк «Олександрія»</li>
+              <li>Замкова гора</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Кіровоградська область -->
+      <div class="oblast-card">
+        <h3>Кіровоградська область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Кропивницький</h4>
+            <ul>
+              <li>Театр корифеїв (Академічний український музично-драматичний театр)</li>
+              <li>Фортеця Святої Єлисавети</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>м. Світловодськ</h4>
+            <ul>
+              <li>Світловодський міський краєзнавчий музей</li>
+              <li>Пам'ятні місця козацької доби Світловодщини</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Львівська область -->
+      <div class="oblast-card">
+        <h3>Львівська область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Львів</h4>
+            <ul>
+              <li>Ансамбль історичного центру (ЮНЕСКО)</li>
+              <li>Латинська катедра, Бернардинський монастир</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>Замки Львівщини (Золота підкова)</h4>
+            <ul>
+              <li>Олеський замок</li>
+              <li>Підгорецький замок</li>
+              <li>Золочівський замок</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Полтавська область -->
+      <div class="oblast-card">
+        <h3>Полтавська область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Полтава</h4>
+            <ul>
+              <li>Державний історико-культурний заповідник «Поле Полтавської битви»</li>
+              <li>Ансамбль Круглої площі</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>смт Опішня</h4>
+            <ul>
+              <li>Національний музей-заповідник українського гончарства</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Тернопільська область -->
+      <div class="oblast-card">
+        <h3>Тернопільська область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Збараж</h4>
+            <ul>
+              <li>Збаразький замок (XVII ст.)</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>м. Кременець</h4>
+            <ul>
+              <li>Замкова гора (Бона)</li>
+              <li>Кременецько-Почаївський ДІАЗ</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Харківська область -->
+      <div class="oblast-card">
+        <h3>Харківська область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Харків</h4>
+            <ul>
+              <li>Покровський собор</li>
+              <li>Харківський художній музей</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>с. Сковородинівка</h4>
+            <ul>
+              <li>Національний літературно-меморіальний музей Г. С. Сковороди</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Хмельницька область -->
+      <div class="oblast-card">
+        <h3>Хмельницька область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Кам'янець-Подільський</h4>
+            <ul>
+              <li>Стара фортеця Кам'янця-Подільського</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>м. Хотин / с. Меджибіж</h4>
+            <ul>
+              <li>Меджибізький замок (XIV–XVI ст.)</li>
+              <li>Державний історико-культурний заповідник «Межибіж»</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Черкаська область -->
+      <div class="oblast-card">
+        <h3>Черкаська область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Чигирин та с. Суботів</h4>
+            <ul>
+              <li>Замкова гора в Чигирині</li>
+              <li>Іллінська церква в Суботові (усипальниця Б. Хмельницького)</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>м. Умань</h4>
+            <ul>
+              <li>Національний дендрологічний парк «Софіївка»</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Чернігівська область -->
+      <div class="oblast-card">
+        <h3>Чернігівська область</h3>
+        <div class="city-list">
+          <div class="city-item">
+            <h4>м. Чернігів</h4>
+            <ul>
+              <li>Спасо-Преображенський та Борисоглібський собори</li>
+              <li>Чернігівський козацький колегіум</li>
+            </ul>
+          </div>
+          <div class="city-item">
+            <h4>м. Батурин</h4>
+            <ul>
+              <li>Національний історико-культурний заповідник «Гетьманська столиця»</li>
+              <li>Палац Кирила Розумовського</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 </main>
 
@@ -204,6 +914,213 @@
   </div>
   <p class="footer-bottom">© Ольга Кобильська — сайт вчителя громадянської та історичної освітньої галузі. Матеріали призначені для учнів 5–11 класів.</p>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Розширена база даних про всі міста
+  var citiesData = {
+    kyiv: {
+      title: 'Київ',
+      desc: 'Столиця України, видатний культурний та духовний центр із понад тисячолітньою історією.',
+      sights: ['Софійський собор (XI ст.)', 'Києво-Печерська лавра', 'Золоті ворота', 'Андріївська церква']
+    },
+    lviv: {
+      title: 'Львів',
+      desc: 'Культурна столиця Західної України, заснована князем Данилом Галицьким у XIII столітті.',
+      sights: ['Ансамбль історичного центру (ЮНЕСКО)', 'Високий замок', 'Площа Ринок', 'Латинський катедральний собор']
+    },
+    lutsk: {
+      title: 'Луцьк',
+      desc: 'Одне з найдавніших міст Волині, відоме зїздом європейських монархів 1429 року.',
+      sights: ['Замок Любарта (XIV ст.)', 'Кафедральний собор Петра і Павла', 'Лютеранська кірха']
+    },
+    rivne: {
+      title: 'Рівне',
+      desc: 'Історичний центр Волинського Полісся з багатою культурною спадщиною.',
+      sights: ['Свято-Воскресенський собор', 'Рівненський обласний краєзнавчий музей', 'Парк «Лебединка»']
+    },
+    zhytomyr: {
+      title: 'Житомир',
+      desc: 'Стародавнє місто на річці Тетерів, батьківщина видатного конструктора Сергія Корольова.',
+      sights: ['Музей космонавтики ім. С. П. Корольова', 'Замкова гора', 'Спасо-Преображенський собор']
+    },
+    chernihiv: {
+      title: 'Чернігів',
+      desc: 'Прадавній центр Чернігово-Сіверського князівства з унікальними храми княжої доби.',
+      sights: ['Спасо-Преображенський собор (XI ст.)', 'П\'ятницька церква', 'Чернігівський Вал (Дитинець)', 'Антонієві печери']
+    },
+    sumy: {
+      title: 'Суми',
+      desc: 'Історичне місто Слобожанщини, засноване козаками під проводом Герасима Кондратьєва.',
+      sights: ['Спасо-Преображенський собор', 'Альтанка', 'Свято-Воскресенська церква']
+    },
+    kharkiv: {
+      title: 'Харків',
+      desc: 'Великий науковий, індустріальний та освітній центр України.',
+      sights: ['Покровський собор (XVII ст.)', 'Площа Свободи та Держпром', 'Благовіщенський собор']
+    },
+    poltava: {
+      title: 'Полтава',
+      desc: 'Духовна столиця України, осередок формування сучасної української літературної мови.',
+      sights: ['Музей «Поле Полтавської битви»', 'Ансамбль Круглої площі', 'Садиба Івана Котляревського']
+    },
+    dnipro: {
+      title: 'Дніпро',
+      desc: 'Космічна та індустріальна столиця України на берегах могутнього Дніпра.',
+      sights: ['Дніпровський історичний музей ім. Д. Яворницького', 'Монастирський острів', 'Преображенський собор']
+    },
+    zaporizhzhia: {
+      title: 'Запоріжжя',
+      desc: 'Колиска українського козацтва та всесвітньо відомої Запорозької Січі.',
+      sights: ['Острів Хортиця', 'Історико-культурний комплекс «Запорозька Січ»', 'ДніпроГЕС']
+    },
+    donetsk: {
+      title: 'Донецьк',
+      desc: 'Великий промисловий та культурний центр Східної України (заснований у 1869 р.).',
+      sights: ['Парк куваних фігур', 'Донецький обласний художній музей', 'Свято-Преображенський собор']
+    },
+    lugansk: {
+      title: 'Луганськ',
+      desc: 'Найсхідніший обласний центр України з багатим промисловим минулим.',
+      sights: ['Луганський обласний краєзнавчий музей', 'Свято-Николаївський собор', 'Меморіал «Гостра Могила»']
+    },
+    kropyvnytskyi: {
+      title: 'Кропивницький',
+      desc: 'Колиска українського професійного театру (Марка Кропивницького, корифеїв).',
+      sights: ['Театр корифеїв', 'Фортеця Святої Єлисавети', 'Художній музей']
+    },
+    svitlovodsk: {
+      title: 'Світловодськ',
+      desc: 'Місто на березі Кременчуцького водосховища, осередки козацької історії.',
+      sights: ['Світловодський міський краєзнавчий музей', 'Кременчуцька ГЕС', 'Пам\'ятники козацької доби']
+    },
+    chyhyryn: {
+      title: 'Чигирин',
+      desc: 'Гетьманська столиця Богдана Хмельницького та серце Козацької держави XVII ст.',
+      sights: ['Резиденція Богдана Хмельницького', 'Замкова гора', 'Ілллінська церква (в с. Суботів)']
+    },
+    uman: {
+      title: 'Умань',
+      desc: 'Туристичний центр Черкащини, відомий шедевром садово-паркового мистецтва.',
+      sights: ['Національний дендрологічний парк «Софіївка»', 'Василіанський монастир', 'Могила цадика Нахмана']
+    },
+    vinnytsia: {
+      title: 'Вінниця',
+      desc: 'Адміністративний та культурний центр Поділля на берегах Південного Бугу.',
+      sights: ['Музей-садиба М. І. Пирогова', 'Вінницькі Мури (XVII ст.)', 'Світломузичний фонтан Roshen']
+    },
+    khmelnytskyi: {
+      title: 'Хмельницький',
+      desc: 'Давній Плоскирів, важливий економічний та культурний вузол Поділля.',
+      sights: ['Покровський кафедральний собор', 'Пам\'ятник Богдану Хмельницькому', 'Обласний краєзнавчий музей']
+    },
+    kamianets: {
+      title: 'Кам\'янець-Подільський',
+      desc: 'Місто-фортеця, один із головних оборонних форпостів Поділля та всієї України.',
+      sights: ['Кам\'янець-Подільська фортеця', 'Замковий міст', 'Катедральний собор Петра і Павла']
+    },
+    ternopil: {
+      title: 'Тернопіль',
+      desc: 'Файне місто над Ставом, засноване Яном Тарновським у 1540 році.',
+      sights: ['Тернопільський замок (XVI ст.)', 'Домініканський костел', 'Тернопільський став']
+    },
+    "ivano-frankivsk": {
+      title: 'Івано-Франківськ',
+      desc: 'Ворота Карпат, колишній Станиславів, заснований у 1662 році.',
+      sights: ['Ратуша та майдан Шептицького', 'Колегіальний костел Пресвятої Діви Марії', 'Бастіон']
+    },
+    uzhhorod: {
+      title: 'Ужгород',
+      desc: 'Найстаріше місто Закарпаття із багатою європейською архітектурною спадщиною.',
+      sights: ['Ужгородський замок', 'Хрестовоздвиженський собор', 'Закарпатський музей народної архітектури']
+    },
+    chernivtsi: {
+      title: 'Чернівці',
+      desc: '«Маленький Відень» Буковини, відомий своєю архітектурною перлиною.',
+      sights: ['Резиденція митрополитів Буковини і Далмації (ЮНЕСКО)', 'Театральна площа', 'Ратуша']
+    },
+    mykolaiv: {
+      title: 'Миколаїв',
+      desc: 'Місто корабелів на злитті Південного Бугу та Інгулу.',
+      sights: ['Миколаївський музей суднобудування і флоту', 'Астрономічна обсерваторія', 'Дитяче містечко «Казка»']
+    },
+    kherson: {
+      title: 'Херсон',
+      desc: 'Місто на Дніпрі біля Чорного моря, засноване у XVIII столітті.',
+      sights: ['Херсонська фортеця та Очаківська брама', 'Свято-Катерининський собор', 'Набережна Дніпра']
+    },
+    odesa: {
+      title: 'Одеса',
+      desc: 'Перлина біля моря, головні морські ворота України та культурний центр.',
+      sights: ['Одеський театр опери та балету', 'Потьомкінські сходи', 'Воронцовський палац', 'Дерибасівська']
+    },
+    "kryvyi-rih": {
+      title: 'Кривий Ріг',
+      desc: 'Найдовше місто Європи, залізорудне серце України.',
+      sights: ['Криворізький ботанічний сад', '3D-відеогалерея та квітковий годинник', 'Кар\'єри Південного ГЗК']
+    },
+    baturyn: {
+      title: 'Батурин',
+      desc: 'Резиденція гетьманів Лівобережної України (Івана Мазепи, Кирила Розумовського).',
+      sights: ['Цитадель Батуринської фортеці', 'Палац гетьмана Кирила Розумовського', 'Будинок Генерального суду']
+    }
+  };
+
+  // Керування масштабом
+  var currentScale = 1;
+  var svgMap = document.getElementById('ukraineSvg');
+  
+  function applyScale(scale) {
+    currentScale = scale;
+    if (currentScale < 0.8) currentScale = 0.8;
+    if (currentScale > 2.5) currentScale = 2.5;
+    svgMap.style.transform = 'scale(' + currentScale + ')';
+  }
+
+  document.getElementById('zoomInBtn').addEventListener('click', function() {
+    applyScale(currentScale + 0.25);
+  });
+
+  document.getElementById('zoomOutBtn').addEventListener('click', function() {
+    applyScale(currentScale - 0.25);
+  });
+
+  document.getElementById('zoomResetBtn').addEventListener('click', function() {
+    applyScale(1);
+  });
+
+  // Модальне вікно
+  var modal = document.getElementById('cityModal');
+  var closeModalBtn = document.getElementById('closeModalBtn');
+
+  closeModalBtn.addEventListener('click', function() {
+    modal.style.display = 'none';
+  });
+
+  // Обробники подій для міст
+  var cityMarkers = document.querySelectorAll('.city-marker');
+  cityMarkers.forEach(function(marker) {
+    marker.addEventListener('click', function() {
+      var cityId = marker.getAttribute('data-id');
+      var data = citiesData[cityId];
+      if (data) {
+        document.getElementById('modalTitle').innerText = data.title;
+        document.getElementById('modalDesc').innerText = data.desc;
+        
+        var list = document.getElementById('modalSights');
+        list.innerHTML = '';
+        data.sights.forEach(function(sight) {
+          var li = document.createElement('li');
+          li.innerText = sight;
+          list.appendChild(li);
+        });
+
+        modal.style.display = 'block';
+      }
+    });
+  });
+});
+</script>
 <script src="script.js"></script>
 </body>
 </html>
