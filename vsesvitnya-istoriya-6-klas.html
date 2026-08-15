@@ -15,8 +15,8 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5388275141105129"
      crossorigin="anonymous"></script>
 <title>Всесвітня історія — 6 клас — Ольга Кобильська, вчитель громадянської та історичної освітньої галузі</title>
-<meta name="description" content="Стародавній Єгипет, Месопотамія, Індія, Китай, античні Греція і Рим.">
-<meta name="keywords" content="всесвітня історія, 6 клас, всесвітня історія 6 клас">
+<meta name="description" content="Відеоуроки з всесвітньої історії для 6 класу: Стародавній Єгипет, Дворіччя, Ассирія, Китай, Давня Греція, Спарта, Афіни, Греко-перські війни, імперія Александра Македонського та Еллінізм.">
+<meta name="keywords" content="всесвітня історія, 6 клас, всесвітня історія 6 клас, відеоуроки 6 клас, історія стародавнього світу">
 <meta name="author" content="Ольга Юріївна Кобильська">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="vsesvitnya-istoriya-6-klas.html">
@@ -32,6 +32,124 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
+<style>
+  /* Стилі для карт відеоуроків та анімації при наведенні */
+  .section-title {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+  }
+  
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .video-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #edf2f7;
+  }
+
+  .video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  }
+
+  .video-thumb-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    background-color: #000;
+  }
+
+  .video-thumb-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  /* Ефект збільшення обкладинки при наведенні */
+  .video-card:hover .video-thumb-wrap img {
+    transform: scale(1.08);
+  }
+
+  /* Іконка Play поверх зображення */
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(220, 38, 38, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .video-card:hover .play-btn {
+    background: rgba(185, 28, 28, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .video-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .video-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    color: #1a202c;
+  }
+
+  .video-card-desc {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 12px;
+    flex-grow: 1;
+    line-height: 1.5;
+  }
+
+  .video-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .hashtag {
+    font-size: 0.75rem;
+    background: #edf2f7;
+    color: #2b6cb0;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -85,14 +203,236 @@
 
   <div class="grid cols-4" style="margin-top:10px;">
     <div class="card"><span class="card-icon">📄</span><h3>Опорні конспекти</h3><p>Стислий виклад теми, схеми, дати та терміни для швидкого повторення.</p></div>
-<div class="card"><span class="card-icon">🎞️</span><h3>Відеоуроки</h3><p>Авторські відеопояснення теми — доступні на YouTube-каналі вчителя.</p></div>
-<div class="card"><span class="card-icon">🧩</span><h3>Практичні завдання</h3><p>Робота з джерелами, контурними картами, документами.</p></div>
-<div class="card"><span class="card-icon">✅</span><h3>Тестові завдання</h3><p>Завдання у форматі НМТ/ДПА для самоперевірки та закріплення.</p></div>
+    <div class="card"><span class="card-icon">🎞️</span><h3>Відеоуроки</h3><p>Авторські відеопояснення теми — доступні на YouTube-каналі вчителя.</p></div>
+    <div class="card"><span class="card-icon">🧩</span><h3>Практичні завдання</h3><p>Робота з джерелами, контурними картами, документами.</p></div>
+    <div class="card"><span class="card-icon">✅</span><h3>Тестові завдання</h3><p>Завдання у форматі НМТ/ДПА для самоперевірки та закріплення.</p></div>
   </div>
 
-  <div class="placeholder-box" style="margin-top:26px;">
-    📥 Матеріали цього розділу поповнюються поступово. Незабаром тут з'являться презентації,
-    відеоуроки та завдання для 6 класу. Стежте за оновленнями!
+  <!-- РОЗДІЛ ВІДЕОУРОКІВ -->
+  <h2 class="section-title">🎬 Авторські відеоуроки</h2>
+  <div class="video-grid">
+    
+    <!-- Відео 1 -->
+    <a href="https://youtu.be/se00wShi1Ag" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/se00wShi1Ag/hqdefault.jpg" alt="Періодизація Давнього Єгипту">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Періодизація Давнього Єгипту</h3>
+        <p class="video-card-desc">Пояснення основних етапів розвитку та періодизації історії Стародавнього Єгипту.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#всесвітняісторія</span>
+          <span class="hashtag">#ДавнійЄгипет</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 2 -->
+    <a href="https://youtu.be/56Jnc4kUEQo" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/56Jnc4kUEQo/hqdefault.jpg" alt="Культура Стародавнього Єгипту">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Культура Стародавнього Єгипту</h3>
+        <p class="video-card-desc">Огляд досягнень єгиптян у писемності, архітектурі, мистецтві та науці.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#культура</span>
+          <span class="hashtag">#ДавнійЄгипет</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 3 -->
+    <a href="https://youtu.be/gYuF3_eLxME" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/gYuF3_eLxME/hqdefault.jpg" alt="Держави Межиріччя">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Держави Межиріччя</h3>
+        <p class="video-card-desc">Вивчення перших цивілізацій Месопотамії, Шумеру та Аккаду між річками Тигр і Євфрат.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#Межиріччя</span>
+          <span class="hashtag">#Месопотамія</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 4 -->
+    <a href="https://youtu.be/krgfoOVsB-I" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/krgfoOVsB-I/hqdefault.jpg" alt="Держави Дворіччя (повторення)">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Держави Дворіччя (повторення)</h3>
+        <p class="video-card-desc">Узагальнення знань та повторення ключових понять з історії держав Дворіччя.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#Дворіччя</span>
+          <span class="hashtag">#повторення</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 5 -->
+    <a href="https://youtu.be/Lr8L4fDaIBk" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/Lr8L4fDaIBk/hqdefault.jpg" alt="Ассирія. Халдейське царство">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Ассирія. Халдейське царство</h3>
+        <p class="video-card-desc">Розповідь про могутню Ассирійську військову державу та Нововавилонське (Халдейське) царство.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#Ассирія</span>
+          <span class="hashtag">#Вавилон</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 6 -->
+    <a href="https://youtu.be/TeoKI6HQLtk" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/TeoKI6HQLtk/hqdefault.jpg" alt="Давній Китай">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Давній Китай</h3>
+        <p class="video-card-desc">Природні умови, виникнення перших держав та об'єднання Китаю за імператора Цінь Шіхуанді.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#ДавнійКитай</span>
+          <span class="hashtag">#всесвітняісторія</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 7 -->
+    <a href="https://youtu.be/R_Ml_3qUUBM" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/R_Ml_3qUUBM/hqdefault.jpg" alt="Культура Давнього Китаю">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Культура Давнього Китаю</h3>
+        <p class="video-card-desc">Винаходи китайців, конфуціанство, даосизм та видатні пам'ятки архітектури й культури.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#КультураКитаю</span>
+          <span class="hashtag">#Конфуцій</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 8 -->
+    <a href="https://youtu.be/t7Of_6SF3v8" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/t7Of_6SF3v8/hqdefault.jpg" alt="Природні умови та найдавніші цивілізації Давньої Греції">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Природні умови та найдавніші цивілізації Давньої Греції</h3>
+        <p class="video-card-desc">Географічне положення, Критська та Мікенська палацові цивілізації Бронзової доби.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#ДавняГреція</span>
+          <span class="hashtag">#Крит</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 9 -->
+    <a href="https://youtu.be/DYEc_MfAxF4" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/DYEc_MfAxF4/hqdefault.jpg" alt="Давня Спарта">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Давня Спарта</h3>
+        <p class="video-card-desc">Особливості суспільного устрою, спартанського виховання та військової держави Лакедемон.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#Спарта</span>
+          <span class="hashtag">#ДавняГреція</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 10 -->
+    <a href="https://youtu.be/g9g0ZL7fh90" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/g9g0ZL7fh90/hqdefault.jpg" alt="Афінська держава">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Афінська держава</h3>
+        <p class="video-card-desc">Становлення афінської демократії, реформи Солона та Клісфена, розквіт за Перікла.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#Афіни</span>
+          <span class="hashtag">#демократія</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 11 -->
+    <a href="https://youtu.be/RywkshYBoKo" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/RywkshYBoKo/hqdefault.jpg" alt="Греко-перські війни">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Греко-перські війни</h3>
+        <p class="video-card-desc">Героїчна боротьба грецьких полісів проти Перської імперії: Марафон, Фермопіли, Саламін.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#ГрекоПерськіВійни</span>
+          <span class="hashtag">#Марафон</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 12 -->
+    <a href="https://youtu.be/m0_aZrgZsPQ" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/m0_aZrgZsPQ/hqdefault.jpg" alt="Імперія Александра Македонського">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Імперія Александра Македонського</h3>
+        <p class="video-card-desc">Східний похід Александра Македонського, розгром Персії та створення світової держави.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#Македонський</span>
+          <span class="hashtag">#Імперія</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 13 -->
+    <a href="https://youtu.be/B2UBdhI9oRw" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/B2UBdhI9oRw/hqdefault.jpg" alt="Еллінізм">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Еллінізм</h3>
+        <p class="video-card-desc">Доба еллінізму: поєднання грецької та східної культур, розвиток науки та Александра Єгипетська.</p>
+        <div class="video-tags">
+          <span class="hashtag">#6клас</span>
+          <span class="hashtag">#Еллінізм</span>
+          <span class="hashtag">#всесвітняісторія</span>
+        </div>
+      </div>
+    </a>
+
   </div>
 
   <div style="display:flex; justify-content:space-between; margin-top:30px; flex-wrap:wrap; gap:10px;">
