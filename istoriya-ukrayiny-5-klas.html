@@ -15,14 +15,14 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5388275141105129"
      crossorigin="anonymous"></script>
 <title>Історія України — 5 клас — Ольга Кобильська, вчитель громадянської та історичної освітньої галузі</title>
-<meta name="description" content="У 5 класі учні роблять перші кроки в історію України в межах інтегрованого курсу «Досліджуємо історію і суспільство»: знайомляться з поняттям історичного джерела, історичної карти та лінії часу.">
-<meta name="keywords" content="історія України, 5 клас, історія україни 5 клас">
+<meta name="description" content="Відеоуроки, опорні матеріали та інтерактивна вікторина з історії України для 5 класу. Авторські матеріали Ольги Кобильської.">
+<meta name="keywords" content="історія України, 5 клас, історія україни 5 клас, відеоуроки 5 клас, досліджуємо історію і суспільство">
 <meta name="author" content="Ольга Юріївна Кобильська">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="istoriya-ukrayiny-5-klas.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Історія України — 5 клас — Ольга Кобильська, вчитель громадянської та історичної освітньої галузі">
-<meta property="og:description" content="У 5 класі учні роблять перші кроки в історію України в межах інтегрованого курсу «Досліджуємо історію і суспільство»: знайомляться з поняттям історичного джерела, історичної карти та лінії часу.">
+<meta property="og:title" content="Історія України — 5 клас — Ольга Кобильська">
+<meta property="og:description" content="У 5 класі учні роблять перші кроки в історію України в межах інтегрованого курсу «Досліджуємо історію і суспільство».">
 <meta property="og:image" content="olga-kobylska-foto.jpg">
 <meta property="og:locale" content="uk_UA">
 <meta name="twitter:card" content="summary_large_image">
@@ -32,6 +32,167 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
+<style>
+  /* Стилі для відеокарт та анімації при наведенні */
+  .section-title {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+  }
+  
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .video-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #edf2f7;
+  }
+
+  .video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  }
+
+  .video-thumb-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    background-color: #000;
+  }
+
+  .video-thumb-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  /* Збільшення обкладинки при наведенні */
+  .video-card:hover .video-thumb-wrap img {
+    transform: scale(1.08);
+  }
+
+  /* Іконка Play поверх зображення */
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(220, 38, 38, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .video-card:hover .play-btn {
+    background: rgba(185, 28, 28, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .video-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .video-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    color: #1a202c;
+  }
+
+  .video-card-desc {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 12px;
+    flex-grow: 1;
+    line-height: 1.5;
+  }
+
+  .video-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .hashtag {
+    font-size: 0.75rem;
+    background: #edf2f7;
+    color: #2b6cb0;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+
+  /* Стилі для Вікторини */
+  .quiz-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 30px;
+  }
+
+  .quiz-list {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .quiz-item {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: border-color 0.2s;
+  }
+
+  .quiz-item[open] {
+    border-color: #3182ce;
+  }
+
+  .quiz-question {
+    font-weight: 600;
+    cursor: pointer;
+    color: #1e293b;
+    outline: none;
+  }
+
+  .quiz-answer {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #e2e8f0;
+    color: #0f766e;
+    font-weight: 500;
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -85,14 +246,262 @@
 
   <div class="grid cols-4" style="margin-top:10px;">
     <div class="card"><span class="card-icon">📄</span><h3>Опорні конспекти</h3><p>Стислий виклад теми, схеми, дати та терміни для швидкого повторення.</p></div>
-<div class="card"><span class="card-icon">🎞️</span><h3>Відеоуроки</h3><p>Авторські відеопояснення теми — доступні на YouTube-каналі вчителя.</p></div>
-<div class="card"><span class="card-icon">🧩</span><h3>Практичні завдання</h3><p>Робота з джерелами, контурними картами, документами.</p></div>
-<div class="card"><span class="card-icon">✅</span><h3>Тестові завдання</h3><p>Завдання у форматі НМТ/ДПА для самоперевірки та закріплення.</p></div>
+    <div class="card"><span class="card-icon">🎞️</span><h3>Відеоуроки</h3><p>Авторські відеопояснення теми — доступні на YouTube-каналі вчителя.</p></div>
+    <div class="card"><span class="card-icon">🧩</span><h3>Практичні завдання</h3><p>Робота з джерелами, контурними картами, документами.</p></div>
+    <div class="card"><span class="card-icon">✅</span><h3>Тестові завдання</h3><p>Завдання у форматі НМТ/ДПА для самоперевірки та закріплення.</p></div>
   </div>
 
-  <div class="placeholder-box" style="margin-top:26px;">
-    📥 Матеріали цього розділу поповнюються поступово. Незабаром тут з'являться презентації,
-    відеоуроки та завдання для 5 класу. Стежте за оновленнями!
+  <!-- РОЗДІЛ ВІДЕОУРОКІВ -->
+  <h2 class="section-title">🎬 Авторські відеоуроки</h2>
+  <div class="video-grid">
+    
+    <!-- Відео 1 -->
+    <a href="https://youtu.be/cw3vT9XKkGU" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/cw3vT9XKkGU/hqdefault.jpg" alt="Історики, історія — 5 клас">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Історики, історія</h3>
+        <p class="video-card-desc">Пояснює значення понять "історія", "історики" та розповідає про відомих науковців, що вивчали історію України.</p>
+        <div class="video-tags">
+          <span class="hashtag">#5клас</span>
+          <span class="hashtag">#5класісторія</span>
+          <span class="hashtag">#урокиісторія</span>
+          <span class="hashtag">#відеоуроки</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 2 -->
+    <a href="https://youtu.be/KNPoX3czETU" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/KNPoX3czETU/hqdefault.jpg" alt="Історичні факти, події та особистості">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Історичні факти, події та особистості</h3>
+        <p class="video-card-desc">Пояснює поняття "історичний факт", "історична подія", "історична особистість" та наводить приклади термінів.</p>
+        <div class="video-tags">
+          <span class="hashtag">#5клас</span>
+          <span class="hashtag">#5класісторія</span>
+          <span class="hashtag">#урокиісторія</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 3 -->
+    <a href="https://youtu.be/yXXeqM-nP40" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/yXXeqM-nP40/hqdefault.jpg" alt="Різновиди історичних джерел">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Різновиди історичних джерел</h3>
+        <p class="video-card-desc">Пояснює значення понять "історичні джерела", "види історичних джерел" та наводить приклади.</p>
+        <div class="video-tags">
+          <span class="hashtag">#5клас</span>
+          <span class="hashtag">#5класісторія</span>
+          <span class="hashtag">#уроки</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 4 -->
+    <a href="https://youtu.be/7wPNV-JqL0M" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/7wPNV-JqL0M/hqdefault.jpg" alt="Історично-етнографічні регіони України">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Історично-етнографічні регіони України</h3>
+        <p class="video-card-desc">Повторення вивченого матеріалу з теми, практична робота з картою України.</p>
+        <div class="video-tags">
+          <span class="hashtag">#5клас</span>
+          <span class="hashtag">#5класісторія</span>
+          <span class="hashtag">#роботазкартою</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 5 -->
+    <a href="https://youtu.be/Mg_OsWmvG2g" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/Mg_OsWmvG2g/hqdefault.jpg" alt="Княжа Русь">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Княжа Русь</h3>
+        <p class="video-card-desc">Огляд ключових сторінок історії доби Княжої Руси-України для учнів 5 класу.</p>
+        <div class="video-tags">
+          <span class="hashtag">#5клас</span>
+          <span class="hashtag">#КняжаРусь</span>
+          <span class="hashtag">#ІсторіяУкраїни</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 6 -->
+    <a href="https://youtu.be/fv6O1cCSdMU" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/fv6O1cCSdMU/hqdefault.jpg" alt="Козацька Україна">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Козацька Україна</h3>
+        <p class="video-card-desc">Захоплива розповідь про доби козацтва, Запорізьку Січ та козацькі традиції.</p>
+        <div class="video-tags">
+          <span class="hashtag">#5клас</span>
+          <span class="hashtag">#Козацтво</span>
+          <span class="hashtag">#ЗапорізькаСіч</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 7 -->
+    <a href="https://youtu.be/_GaEOb2bANU" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/_GaEOb2bANU/hqdefault.jpg" alt="Історія рідного краю">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Історія рідного краю (м. Світловодськ)</h3>
+        <p class="video-card-desc">Краєзнавчий матеріал про історію міста Світловодськ та Кіровоградщини.</p>
+        <div class="video-tags">
+          <span class="hashtag">#5клас</span>
+          <span class="hashtag">#РіднийКрай</span>
+          <span class="hashtag">#Світловодськ</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 8 -->
+    <a href="https://youtu.be/xZf4A-4QJpg" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/xZf4A-4QJpg/hqdefault.jpg" alt="Вікторина Усе про Україну">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Відеовікторина «Усе про Україну»</h3>
+        <p class="video-card-desc">Цікава інтерактивна відеовікторина для закріплення знань про історію та видатних постатей України.</p>
+        <div class="video-tags">
+          <span class="hashtag">#вікторина</span>
+          <span class="hashtag">#усепроУкраїну</span>
+          <span class="hashtag">#історіяУкраїни</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- РОЗДІЛ ІНТЕРАКТИВНОЇ ВІКТОРИНИ -->
+  <div class="quiz-box">
+    <h2>🧠 Інтерактивна вікторина «Усе про Україну»</h2>
+    <p>Перевірте свої знання! Натисніть на запитання, щоб дізнатися правильну відповідь.</p>
+    
+    <div class="quiz-list">
+      
+      <details class="quiz-item">
+        <summary class="quiz-question">1. Коли з’явилися перші люди на території України?</summary>
+        <div class="quiz-answer">Відповідь: На територію сучасної України перші люди проникли приблизно 1 млн років тому, у період раннього палеоліту (кам'яного віку).</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">2. Як називалися найдавніші землероби на території України?</summary>
+        <div class="quiz-answer">Відповідь: Трипільці (племена трипільської культури). Мешкали тут із другої половини ІV до кінця ІІІ тис. до н. е. в енеоліті.</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">3. Які кочові племена залишили багату культурну спадщину у вигляді курганних скарбів?</summary>
+        <div class="quiz-answer">Відповідь: Скіфи, що жили на території України (степ та лісостеп, Крим) з VII до ІІІ-ІІ ст. до н. е.</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">4. Як називається найвідоміша скіфська пам’ятка?</summary>
+        <div class="quiz-answer">Відповідь: Скіфська пектораль — золота нагрудна прикраса царя вагою 1149 грам і діаметром понад 30 см.</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">5. Назвіть імена засновників столиці України.</summary>
+        <div class="quiz-answer">Відповідь: Кий, Щек, Хорив та їхня сестра Либідь.</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">6. Які східнослов’янські племена вважають предками українців?</summary>
+        <div class="quiz-answer">Відповідь: Древляни, поляни, уличі, тіверці, сіверяни, волиняни (дуліби) та білі хорвати.</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">7. Назвіть імена князів, правління яких ввійшло в історію як розквіт Русі-України.</summary>
+        <div class="quiz-answer">Відповідь: Володимир Великий та Ярослав Мудрий.</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">8. В якому столітті з’явилися перші писемні пам’ятки про козаків?</summary>
+        <div class="quiz-answer">Відповідь: Наприкінці XV століття (перші згадки датуються 80–90-ми роками XV ст.).</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">9. Назвіть ім’я легендарного засновника Запорізької Січі.</summary>
+        <div class="quiz-answer">Відповідь: Князь Дмитро Вишневецький (Байда).</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">10. Кого із гетьманів називають «Рятівник Європи»?</summary>
+        <div class="quiz-answer">Відповідь: Петро Конашевич-Сагайдачний (за розгром турецького війська у 1621 році під Хотином).</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">11. Хто із відомих українців виборов незалежність України в середині XVII століття?</summary>
+        <div class="quiz-answer">Відповідь: Богдан Хмельницький (у 1649 р. підписав Зборівський мирний договір).</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">12. Відомий український філософ, якого називали «мандрівна академія», «людина-університет».</summary>
+        <div class="quiz-answer">Відповідь: Григорій Савович Сковорода.</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">13. Відомий українець, якому за внесок у розвиток культури встановлено в світі 1384 пам’ятники.</summary>
+        <div class="quiz-answer">Відповідь: Тарас Григорович Шевченко.</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">14. Український вчений, що знав більше 60 сучасних та давніх мов світу.</summary>
+        <div class="quiz-answer">Відповідь: Агатангел Юхимович Кримський.</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">15. Відомий український поет, що першим почав вдягати вишиванку як повсякденний та урочистий одяг.</summary>
+        <div class="quiz-answer">Відповідь: Іван Якович Франко.</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">16. Вчений, засновник геохімії й радіогеології, автор вчень про біосферу і ноосферу.</summary>
+        <div class="quiz-answer">Відповідь: Володимир Іванович Вернадський.</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">17. Коли відбувся Акт злуки між Наддніпрянщиною та Західною Україною?</summary>
+        <div class="quiz-answer">Відповідь: 22 січня 1919 року (об'єднання УНР і ЗУНР на Софійському майдані в Києві).</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">18. Коли Україна святкує День Конституції?</summary>
+        <div class="quiz-answer">Відповідь: 28 червня (Основний Закон прийнято 28 червня 1996 року).</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">19. Коли українці святкують День незалежності?</summary>
+        <div class="quiz-answer">Відповідь: 24 серпня (Акт проголошення незалежності України прийнято 24 серпня 1991 року).</div>
+      </details>
+
+      <details class="quiz-item">
+        <summary class="quiz-question">20. Назвіть день, коли український народ підтвердив Акт проголошення незалежності на референдумі.</summary>
+        <div class="quiz-answer">Відповідь: 1 грудня 1991 року.</div>
+      </details>
+
+    </div>
   </div>
 
   <div style="display:flex; justify-content:space-between; margin-top:30px; flex-wrap:wrap; gap:10px;">
