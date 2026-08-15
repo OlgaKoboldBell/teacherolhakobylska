@@ -15,23 +15,141 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5388275141105129"
      crossorigin="anonymous"></script>
 <title>Правознавство — 9 клас — Ольга Кобильська, вчитель громадянської та історичної освітньої галузі</title>
-<meta name="description" content="Конституція України, права людини, цивільне, сімейне, трудове та кримінальне право — практичний курс.">
-<meta name="keywords" content="правознавство, 9 клас, правознавство 9 клас">
+<meta name="description" content="Основи правознавства для 9 класу: відеоуроки, органи державної влади, правовідносини, норма права, конституційні права, злочини та адміністративні правопорушення.">
+<meta name="keywords" content="правознавство, 9 клас, основи правознавства, відеоуроки, органи влади, правовідносини, конституційні права, кримінальна відповідальність">
 <meta name="author" content="Ольга Юріївна Кобильська">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="pravoznavstvo-9-klas.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Правознавство — 9 клас — Ольга Кобильська, вчитель громадянської та історичної освітньої галузі">
-<meta property="og:description" content="Конституція України, права людини, цивільне, сімейне, трудове та кримінальне право — практичний курс.">
+<meta property="og:title" content="Правознавство — 9 клас — Ольга Кобильська">
+<meta property="og:description" content="Відеоуроки та матеріали з основ правознавства для 9 класу.">
 <meta property="og:image" content="olga-kobylska-foto.jpg">
 <meta property="og:locale" content="uk_UA">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
+<style>
+  /* Стилі для сітки та карток відеоуроків */
+  .section-title {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+  }
+  
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .video-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #edf2f7;
+  }
+
+  .video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  }
+
+  .video-thumb-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Співвідношення сторін 16:9 */
+    overflow: hidden;
+    background-color: #000;
+  }
+
+  .video-thumb-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  /* Ефект збільшення обкладинки при наведенні курсору */
+  .video-card:hover .video-thumb-wrap img {
+    transform: scale(1.08);
+  }
+
+  /* Кнопка Play по центру зображення */
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(220, 38, 38, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .video-card:hover .play-btn {
+    background: rgba(185, 28, 28, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .video-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .video-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    color: #1a202c;
+  }
+
+  .video-card-desc {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 12px;
+    flex-grow: 1;
+    line-height: 1.5;
+  }
+
+  .video-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .hashtag {
+    font-size: 0.75rem;
+    background: #edf2f7;
+    color: #2b6cb0;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -77,27 +195,215 @@
     <span class="grade-num">9</span>
     <div>
       <h1 style="color:#fff;margin-bottom:4px;">Правознавство — 9 клас</h1>
-      <p style="margin:0;color:#E7DEC2;">Практичне право</p>
+      <p style="margin:0;color:#E7DEC2;">Основи правознавства: держава, право, права і свободи людини</p>
     </div>
   </div>
 
-  <p class="lede">Конституція України, права людини, цивільне, сімейне, трудове та кримінальне право — практичний курс.</p>
+  <p class="lede">Курс «Основи правознавства» ознайомлює учнів із базовими поняттями держави та права, конституційними правами й обов'язками громадян, правовідносинами, нормативно-правовими актами та юридичною відповідальністю.</p>
 
   <div class="grid cols-4" style="margin-top:10px;">
-    <div class="card"><span class="card-icon">📄</span><h3>Опорні конспекти</h3><p>Стислий виклад теми, схеми, дати та терміни для швидкого повторення.</p></div>
-<div class="card"><span class="card-icon">🎞️</span><h3>Відеоуроки</h3><p>Авторські відеопояснення теми — доступні на YouTube-каналі вчителя.</p></div>
-<div class="card"><span class="card-icon">🧩</span><h3>Практичні завдання</h3><p>Робота з джерелами, контурними картами, документами.</p></div>
-<div class="card"><span class="card-icon">✅</span><h3>Тестові завдання</h3><p>Завдання у форматі НМТ/ДПА для самоперевірки та закріплення.</p></div>
+    <div class="card"><span class="card-icon">📄</span><h3>Опорні конспекти</h3><p>Стислий виклад теми, схеми, поняття та юридичні терміни.</p></div>
+    <div class="card"><span class="card-icon">🎞️</span><h3>Відеоуроки</h3><p>Авторські відеопояснення правових тем на YouTube-каналі вчителя.</p></div>
+    <div class="card"><span class="card-icon">🧩</span><h3>Практичні завдання</h3><p>Аналіз юридичних ситуацій, робота з нормативно-правовими актами.</p></div>
+    <div class="card"><span class="card-icon">✅</span><h3>Тестові завдання</h3><p>Завдання та ситуаційні задачі для перевірки знань.</p></div>
   </div>
 
-  <div class="placeholder-box" style="margin-top:26px;">
-    📥 Матеріали цього розділу поповнюються поступово. Незабаром тут з'являться презентації,
-    відеоуроки та завдання для 9 класу. Стежте за оновленнями!
+  <!-- РОЗДІЛ ВІДЕОУРОКІВ -->
+  <h2 class="section-title">🎬 Авторські відеоуроки</h2>
+  <div class="video-grid">
+    
+    <!-- Відео 1 -->
+    <a href="https://youtu.be/4U1v4pezDJ4" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/4U1v4pezDJ4/hqdefault.jpg" alt="Органи державної влади">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Органи державної влади</h3>
+        <p class="video-card-desc">Поняття та система органів державної влади в Україні, поділ влади на законодавчу, виконавчу та судову.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#Правознавство</span>
+          <span class="hashtag">#ОрганиВлади</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 2 -->
+    <a href="https://youtu.be/KLrojKTilU0" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/KLrojKTilU0/hqdefault.jpg" alt="Правовідносини">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Правовідносини</h3>
+        <p class="video-card-desc">Поняття, структура та склад правовідносин: суб'єкти, об'єкти та зміст правовідносин. Юридичні факти.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#Правознавство</span>
+          <span class="hashtag">#Правовідносини</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 3 -->
+    <a href="https://youtu.be/Vac6NSA9eJ0" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/Vac6NSA9eJ0/hqdefault.jpg" alt="Правопорушення">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Правопорушення</h3>
+        <p class="video-card-desc">Поняття та ознаки правопорушення, склад правопорушення, види правопорушень та юридична відповідальність.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#Правознавство</span>
+          <span class="hashtag">#Правопорушення</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 4 -->
+    <a href="https://youtu.be/8uN6otRGF0c" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/8uN6otRGF0c/hqdefault.jpg" alt="Норма права. Джерела права. Нормативно-правові акти">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Норма права. Джерела права. Нормативно-правові акти</h3>
+        <p class="video-card-desc">Розгляд понять норми права, джерел права, класифікації та юридичної сили нормативно-правових актів.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#НормаПрава</span>
+          <span class="hashtag">#ДжерелаПрава</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 5 -->
+    <a href="https://youtu.be/ouSJHulbtD0" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/ouSJHulbtD0/hqdefault.jpg" alt="Конституційні права і свободи">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Конституційні права і свободи</h3>
+        <p class="video-card-desc">Класифікація та характеристика основних прав, свобод та обов'язків людини і громадянина за Конституцією України.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#КонституційніПрава</span>
+          <span class="hashtag">#КонституційніСвободи</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 6 -->
+    <a href="https://youtu.be/rng85SscVSs" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/rng85SscVSs/hqdefault.jpg" alt="Взаємозв'язок людини і держави (повторення)">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Взаємозв'язок людини і держави (повторення)</h3>
+        <p class="video-card-desc">Повторення та узагальнення матеріалу про правовий статус особи, громадянство та взаємодію людини з державою.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#Правознавство</span>
+          <span class="hashtag">#ЛюдинаІДержава</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 7 -->
+    <a href="https://youtu.be/34Kjba9nPlY" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/34Kjba9nPlY/hqdefault.jpg" alt="Види прав людини. Верховенство права. Частина 1">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Види прав людини. Верховенство права (Частина 1)</h3>
+        <p class="video-card-desc">Покоління прав людини, їх класифікація та сутність принципу верховенства права в сучасному суспільстві.</p>
+        <div class="video-tags">
+          <span class="hashtag">#ПраваЛюдини</span>
+          <span class="hashtag">#ВерховенствоПрава</span>
+          <span class="hashtag">#Право</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 8 -->
+    <a href="https://youtu.be/S6QRUTBCYzc" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/S6QRUTBCYzc/hqdefault.jpg" alt="Верховенство права. Частина 2">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Верховенство права (Частина 2)</h3>
+        <p class="video-card-desc">Продовження теми верховенства права: практичне значення, гарантії забезпечення прав і свобод людини у правовій державі.</p>
+        <div class="video-tags">
+          <span class="hashtag">#ВерховенствоПрава</span>
+          <span class="hashtag">#Правознавство</span>
+          <span class="hashtag">#ГромадянськаОсвіта</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 9 -->
+    <a href="https://youtu.be/DnnkLL0qpms" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/DnnkLL0qpms/hqdefault.jpg" alt="Система права">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Система права</h3>
+        <p class="video-card-desc">Що таке система права, різниця між публічним і приватним правом, галузі, інститути та норми права, методи регулювання.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#СистемаПрава</span>
+          <span class="hashtag">#ОсновиПравознавства</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 10 -->
+    <a href="https://youtu.be/cqhfdIl_jBY" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/cqhfdIl_jBY/hqdefault.jpg" alt="Злочини. Кримінальна відповідальність">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Злочини. Кримінальна відповідальність</h3>
+        <p class="video-card-desc">Поняття та види злочинів за ККУ. Розбір складів злочинів, ознак, підстав та видів покарань за їх вчинення.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#Злочини</span>
+          <span class="hashtag">#КримінальнеПраво</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 11 -->
+    <a href="https://youtu.be/1ZpWoGjFGUk" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/1ZpWoGjFGUk/hqdefault.jpg" alt="Адміністративні правопорушення">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Адміністративні правопорушення</h3>
+        <p class="video-card-desc">Адміністративне право, види та особливості адміністративних правопорушень, приклади адміністративних стягнень.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#АдмінПраво</span>
+          <span class="hashtag">#АдмінСтягнення</span>
+        </div>
+      </div>
+    </a>
+
   </div>
 
   <div style="display:flex; justify-content:space-between; margin-top:30px; flex-wrap:wrap; gap:10px;">
-    <div><a class="btn secondary" style="border-color:var(--navy);color:var(--navy);" href="pravoznavstvo-8-klas.html">← 8 клас</a></div>
-    <div><a class="btn" href="pravoznavstvo-10-klas.html">10 клас →</a></div>
+    <div><a class="btn secondary" style="border-color:var(--navy);color:var(--navy);" href="pravoznavstvo.html">← До розділу «Правознавство»</a></div>
+    <div></div>
   </div>
 </div>
 
