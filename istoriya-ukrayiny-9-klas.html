@@ -15,8 +15,8 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5388275141105129"
      crossorigin="anonymous"></script>
 <title>Історія України — 9 клас — Ольга Кобильська, вчитель громадянської та історичної освітньої галузі</title>
-<meta name="description" content="Українські землі у складі Російської та Австрійської імперій, національне відродження, реформи, українська інтелігенція.">
-<meta name="keywords" content="історія України, 9 клас, історія україни 9 клас">
+<meta name="description" content="Відеоуроки з історії України для 9 класу: Український проєкт, міжнародні конфлікти XIX ст., культура, національне відродження, революція 1905-1907 рр., Столипінська реформа.">
+<meta name="keywords" content="історія України, 9 клас, історія україни 9 клас, відеоуроки 9 клас, революція 1905-1907, Столипінська реформа, Іван Франко, Український проєкт">
 <meta name="author" content="Ольга Юріївна Кобильська">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="istoriya-ukrayiny-9-klas.html">
@@ -32,6 +32,124 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
+<style>
+  /* Стилі для карток відеоуроків та анімації при наведенні */
+  .section-title {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+  }
+  
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .video-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #edf2f7;
+  }
+
+  .video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  }
+
+  .video-thumb-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Aspect Ratio 16:9 */
+    overflow: hidden;
+    background-color: #000;
+  }
+
+  .video-thumb-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  /* Ефект збільшення обкладинки при наведенні */
+  .video-card:hover .video-thumb-wrap img {
+    transform: scale(1.08);
+  }
+
+  /* Іконка Play поверх зображення */
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(220, 38, 38, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .video-card:hover .play-btn {
+    background: rgba(185, 28, 28, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .video-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .video-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    color: #1a202c;
+  }
+
+  .video-card-desc {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 12px;
+    flex-grow: 1;
+    line-height: 1.5;
+  }
+
+  .video-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .hashtag {
+    font-size: 0.75rem;
+    background: #edf2f7;
+    color: #2b6cb0;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -85,14 +203,168 @@
 
   <div class="grid cols-4" style="margin-top:10px;">
     <div class="card"><span class="card-icon">📄</span><h3>Опорні конспекти</h3><p>Стислий виклад теми, схеми, дати та терміни для швидкого повторення.</p></div>
-<div class="card"><span class="card-icon">🎞️</span><h3>Відеоуроки</h3><p>Авторські відеопояснення теми — доступні на YouTube-каналі вчителя.</p></div>
-<div class="card"><span class="card-icon">🧩</span><h3>Практичні завдання</h3><p>Робота з джерелами, контурними картами, документами.</p></div>
-<div class="card"><span class="card-icon">✅</span><h3>Тестові завдання</h3><p>Завдання у форматі НМТ/ДПА для самоперевірки та закріплення.</p></div>
+    <div class="card"><span class="card-icon">🎞️</span><h3>Відеоуроки</h3><p>Авторські відеопояснення теми — доступні на YouTube-каналі вчителя.</p></div>
+    <div class="card"><span class="card-icon">🧩</span><h3>Практичні завдання</h3><p>Робота з джерелами, контурними картами, документами.</p></div>
+    <div class="card"><span class="card-icon">✅</span><h3>Тестові завдання</h3><p>Завдання у форматі НМТ/ДПА для самоперевірки та закріплення.</p></div>
   </div>
 
-  <div class="placeholder-box" style="margin-top:26px;">
-    📥 Матеріали цього розділу поповнюються поступово. Незабаром тут з'являться презентації,
-    відеоуроки та завдання для 9 класу. Стежте за оновленнями!
+  <!-- РОЗДІЛ ВІДЕОУРОКІВ -->
+  <h2 class="section-title">🎬 Авторські відеоуроки</h2>
+  <div class="video-grid">
+    
+    <!-- Відео 1 -->
+    <a href="https://youtu.be/SuRXw2VW5UM" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/SuRXw2VW5UM/hqdefault.jpg" alt="Український проєкт">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Український проєкт</h3>
+        <p class="video-card-desc">Сутність та етапи формування українського національного проєкту у ХІХ столітті.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#історіяУкраїни</span>
+          <span class="hashtag">#УкраїнськийПроєкт</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 2 -->
+    <a href="https://youtu.be/3evli_JHir0" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/3evli_JHir0/hqdefault.jpg" alt="Участь України в міжнародних конфліктах в 1 третині 19 ст.">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Участь України в міжнародних конфліктах (1-ша третина XIX ст.)</h3>
+        <p class="video-card-desc">Українські землі у російсько-турецьких війнах та війні 1812 року, роль козацтва.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#історія</span>
+          <span class="hashtag">#19століття</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 3 -->
+    <a href="https://youtu.be/Qd_YhenXO5w" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/Qd_YhenXO5w/hqdefault.jpg" alt="Особливості розвитку культури України наприкінці 18 - на початку 19 століття">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Особливості розвитку культури України (кін. XVIII – поч. XIX ст.)</h3>
+        <p class="video-card-desc">Розвиток освіти, науки, літератури та мистецтва в період становлення національної свідомості.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#культура</span>
+          <span class="hashtag">#історіяУкраїни</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 4 -->
+    <a href="https://youtu.be/D03ZN4_MK5g" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/D03ZN4_MK5g/hqdefault.jpg" alt="Українські землі під владою Російської імперії на поч 19 ст">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Українські землі під владою Російської імперії на поч. XIX ст.</h3>
+        <p class="video-card-desc">Узагальнення теми: адміністративно-територіальний устрій, соціально-економічне становище та колоніальна політика царату.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#Наддніпрянщина</span>
+          <span class="hashtag">#повторення</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 5 -->
+    <a href="https://youtu.be/9tnEUy-gpE8" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/9tnEUy-gpE8/hqdefault.jpg" alt="Національне відродження на Зх. Україні в 1 пол. 19 ст. Част. 2">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Національне відродження на Зх. Україні в 1-й пол. XIX ст. (Ч. 2)</h3>
+        <p class="video-card-desc">Діяльність «Руської трійці», альманах «Русалка Дністровая» та розгортання українського руху в Галичині.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#ЗахіднаУкраїна</span>
+          <span class="hashtag">#РуськаТрійця</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 6 -->
+    <a href="https://youtu.be/12WmJ9yAFyY" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/12WmJ9yAFyY/hqdefault.jpg" alt="Політизація національних рухів на Зх Україні наприкінці 19 ст.">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Політизація національних рухів на Зх. Україні наприкінці XIX ст.</h3>
+        <p class="video-card-desc">Політичний етап українського проєкту: створення першої політичної партії (РУРП) та роль Івана Франка.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#ІванФранко</span>
+          <span class="hashtag">#РУРП</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 7 -->
+    <a href="https://youtu.be/f2n03AG8aJY" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/f2n03AG8aJY/hqdefault.jpg" alt="Події революції 1905-1907 років на Україні">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Події революції 1905–1907 років в Україні</h3>
+        <p class="video-card-desc">Причини, привід, хід та наслідки революції 1905–1907 рр. Суспільно-політичні зміни та підготовка до НМТ.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#революція1905</span>
+          <span class="hashtag">#історіяУкраїни</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 8 -->
+    <a href="https://youtu.be/BCTeLo6wco8" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/BCTeLo6wco8/hqdefault.jpg" alt="Столипінська реформа">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Столипінська аграрна реформа</h3>
+        <p class="video-card-desc">Мета, зміст, особливості проведення та наслідки Столипінської реформи на українських землях.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#СтолипінськаРеформа</span>
+          <span class="hashtag">#аграрнаРеформа</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 9 -->
+    <a href="https://youtu.be/_9x5oDH0NTs" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/_9x5oDH0NTs/hqdefault.jpg" alt="Національний гніт на Наддніпрянщині в 1907-1914 роках">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Національний гніт на Наддніпрянщині (1907–1914 рр.)</h3>
+        <p class="video-card-desc">Посилення російського шовінізму, обмеження українського культурно-освітнього життя та реакція суспільства.</p>
+        <div class="video-tags">
+          <span class="hashtag">#9клас</span>
+          <span class="hashtag">#Наддніпрянщина</span>
+          <span class="hashtag">#історія9клас</span>
+        </div>
+      </div>
+    </a>
+
   </div>
 
   <div style="display:flex; justify-content:space-between; margin-top:30px; flex-wrap:wrap; gap:10px;">
