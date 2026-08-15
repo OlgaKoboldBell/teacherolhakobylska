@@ -15,8 +15,8 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5388275141105129"
      crossorigin="anonymous"></script>
 <title>Історія України — 7 клас — Ольга Кобильська, вчитель громадянської та історичної освітньої галузі</title>
-<meta name="description" content="Київська Русь, хрещення Русі, Галицько-Волинське князівство, литовсько-польська доба.">
-<meta name="keywords" content="історія України, 7 клас, історія україни 7 клас">
+<meta name="description" content="Відеоуроки та матеріали з історії України для 7 класу: Русь-Україна, князі Олег, Ольга, Ігор, Святослав, Ярослав Мудрий, устрій Русі, культура, Кревська унія.">
+<meta name="keywords" content="історія України, 7 клас, історія україни 7 клас, відеоуроки 7 клас, Київська Русь, Ярослав Мудрий, Кревська унія">
 <meta name="author" content="Ольга Юріївна Кобильська">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="istoriya-ukrayiny-7-klas.html">
@@ -32,6 +32,124 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
+<style>
+  /* Стилі для каток відеоуроків та анімації при наведенні */
+  .section-title {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+  }
+  
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .video-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #edf2f7;
+  }
+
+  .video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  }
+
+  .video-thumb-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Співвідношення 16:9 */
+    overflow: hidden;
+    background-color: #000;
+  }
+
+  .video-thumb-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  /* Ефект збільшення обкладинки при наведенні */
+  .video-card:hover .video-thumb-wrap img {
+    transform: scale(1.08);
+  }
+
+  /* Іконка Play поверх зображення */
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(220, 38, 38, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .video-card:hover .play-btn {
+    background: rgba(185, 28, 28, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .video-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .video-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    color: #1a202c;
+  }
+
+  .video-card-desc {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 12px;
+    flex-grow: 1;
+    line-height: 1.5;
+  }
+
+  .video-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .hashtag {
+    font-size: 0.75rem;
+    background: #edf2f7;
+    color: #2b6cb0;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -85,14 +203,185 @@
 
   <div class="grid cols-4" style="margin-top:10px;">
     <div class="card"><span class="card-icon">📄</span><h3>Опорні конспекти</h3><p>Стислий виклад теми, схеми, дати та терміни для швидкого повторення.</p></div>
-<div class="card"><span class="card-icon">🎞️</span><h3>Відеоуроки</h3><p>Авторські відеопояснення теми — доступні на YouTube-каналі вчителя.</p></div>
-<div class="card"><span class="card-icon">🧩</span><h3>Практичні завдання</h3><p>Робота з джерелами, контурними картами, документами.</p></div>
-<div class="card"><span class="card-icon">✅</span><h3>Тестові завдання</h3><p>Завдання у форматі НМТ/ДПА для самоперевірки та закріплення.</p></div>
+    <div class="card"><span class="card-icon">🎞️</span><h3>Відеоуроки</h3><p>Авторські відеопояснення теми — доступні на YouTube-каналі вчителя.</p></div>
+    <div class="card"><span class="card-icon">🧩</span><h3>Практичні завдання</h3><p>Робота з джерелами, контурними картами, документами.</p></div>
+    <div class="card"><span class="card-icon">✅</span><h3>Тестові завдання</h3><p>Завдання у форматі НМТ/ДПА для самоперевірки та закріплення.</p></div>
   </div>
 
-  <div class="placeholder-box" style="margin-top:26px;">
-    📥 Матеріали цього розділу поповнюються поступово. Незабаром тут з'являться презентації,
-    відеоуроки та завдання для 7 класу. Стежте за оновленнями!
+  <!-- РОЗДІЛ ВІДЕОУРОКІВ -->
+  <h2 class="section-title">🎬 Авторські відеоуроки</h2>
+  <div class="video-grid">
+    
+    <!-- Відео 1 -->
+    <a href="https://youtu.be/DlxxlD_Sqh4" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/DlxxlD_Sqh4/hqdefault.jpg" alt="Становлення України-Русі">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Залікова робота: Становлення України-Русі</h3>
+        <p class="video-card-desc">Пояснення до залікової роботи: внутрішня та зовнішня діяльність князів Олега, Ігоря, Ольги та Святослава.</p>
+        <div class="video-tags">
+          <span class="hashtag">#7клас</span>
+          <span class="hashtag">#історіяУкраїни</span>
+          <span class="hashtag">#уроки7клас</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 2 -->
+    <a href="https://youtu.be/rylOs60gCQE" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/rylOs60gCQE/hqdefault.jpg" alt="Правління Ярослава Мудрого">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Правління Ярослава Мудрого</h3>
+        <p class="video-card-desc">Внутрішня і зовнішня політика Ярослава Мудрого, розквіт Русі-України та складання «Руської Правди».</p>
+        <div class="video-tags">
+          <span class="hashtag">#7клас</span>
+          <span class="hashtag">#історіяУкраїни</span>
+          <span class="hashtag">#ЯрославМудрий</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 3 -->
+    <a href="https://youtu.be/7y4YrKnsMyw" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/7y4YrKnsMyw/hqdefault.jpg" alt="Діяльність Ярослава Мудрого повторення">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Діяльність Ярослава Мудрого (Повторення)</h3>
+        <p class="video-card-desc">Узагальнення та систематизація знань про добу правління великого київського князя Ярослава Мудрого.</p>
+        <div class="video-tags">
+          <span class="hashtag">#7клас</span>
+          <span class="hashtag">#повторення</span>
+          <span class="hashtag">#ЯрославМудрий</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 4 -->
+    <a href="https://youtu.be/5KJ22VKPe58" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/5KJ22VKPe58/hqdefault.jpg" alt="Політичний устрій та соціально-економічний розвиток Русі в 10-11 ст.">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Політичний устрій та соціально-економічний розвиток Русі в X–XI ст.</h3>
+        <p class="video-card-desc">Особливості державного устрою, верстви населення, розвиток землеробства, ремесла та торгівлі.</p>
+        <div class="video-tags">
+          <span class="hashtag">#7клас</span>
+          <span class="hashtag">#історіяУкраїни</span>
+          <span class="hashtag">#суспільствоРусі</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 5 -->
+    <a href="https://youtu.be/s4pYQ6_QbpY" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/s4pYQ6_QbpY/hqdefault.jpg" alt="Суспільно-політичний устрій Київської Русі в 10 -11 ст.">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Суспільно-політичний устрій Київської Русі в X–XI ст.</h3>
+        <p class="video-card-desc">Політичний лад, княжа влада, бояри, дружина та структура суспільства в період розквіту Київської держави.</p>
+        <div class="video-tags">
+          <span class="hashtag">#7клас</span>
+          <span class="hashtag">#КиївськаРусь</span>
+          <span class="hashtag">#устрій</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 6 -->
+    <a href="https://youtu.be/6-4HSEC82gA" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/6-4HSEC82gA/hqdefault.jpg" alt="Кочові народи">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Кочові народи та Русь</h3>
+        <p class="video-card-desc">Взаємини Київської Русі з печенігами, торками та половцями: війни, дипломатія та культурні впливи.</p>
+        <div class="video-tags">
+          <span class="hashtag">#7клас</span>
+          <span class="hashtag">#кочовики</span>
+          <span class="hashtag">#половці</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 7 -->
+    <a href="https://youtu.be/GEMAV4hA5b0" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/GEMAV4hA5b0/hqdefault.jpg" alt="Культура Русі в 2 пол 11 - 1 пол 13 ст.">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Культура Русі в другій пол. XI — першій пол. XIII ст.</h3>
+        <p class="video-card-desc">Архітектура, образотворче мистецтво, літописання, освіта та фольклор у добу феодальної роздрібленості.</p>
+        <div class="video-tags">
+          <span class="hashtag">#7клас</span>
+          <span class="hashtag">#культура</span>
+          <span class="hashtag">#памятки</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 8 -->
+    <a href="https://youtu.be/XjavsKAPzNQ" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/XjavsKAPzNQ/hqdefault.jpg" alt="Кревська унія. Боротьба проти польського наступу">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Кревська унія. Боротьба проти польського наступу</h3>
+        <p class="video-card-desc">Передумови та наслідки Кревської унії 1385 року для українських земель у складі Великого князівства Литовського.</p>
+        <div class="video-tags">
+          <span class="hashtag">#7клас</span>
+          <span class="hashtag">#КревськаУнія</span>
+          <span class="hashtag">#історія</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 9 -->
+    <a href="https://youtu.be/nQ2XvH89-Fk" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/nQ2XvH89-Fk/hqdefault.jpg" alt="Українські землі у складі іноземних держав в 14 - поч 16 ст.">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Українські землі у складі іноземних держав (XIV — поч. XVI ст.)</h3>
+        <p class="video-card-desc">Становище українських земель під владою Литви, Польщі, Угорщини, Московії та Османської імперії.</p>
+        <div class="video-tags">
+          <span class="hashtag">#7клас</span>
+          <span class="hashtag">#історія</span>
+          <span class="hashtag">#середньовіччя</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Відео 10 -->
+    <a href="https://youtu.be/eOk0vP-M0CU" target="_blank" rel="noopener" class="video-card">
+      <div class="video-thumb-wrap">
+        <img src="https://img.youtube.com/vi/eOk0vP-M0CU/hqdefault.jpg" alt="Князі Русі-України">
+        <div class="play-btn">▶</div>
+      </div>
+      <div class="video-card-body">
+        <h3 class="video-card-title">Князі Русі-України</h3>
+        <p class="video-card-desc">Узагальнюючий огляд діяльності видатних правителів Київської держави від витоків до періоду розквіту.</p>
+        <div class="video-tags">
+          <span class="hashtag">#князі</span>
+          <span class="hashtag">#7клас</span>
+          <span class="hashtag">#історіяУкраїни</span>
+        </div>
+      </div>
+    </a>
+
   </div>
 
   <div style="display:flex; justify-content:space-between; margin-top:30px; flex-wrap:wrap; gap:10px;">
