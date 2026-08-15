@@ -32,6 +32,84 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
+<style>
+  /* Стилі для лінії часу */
+  .timeline-container {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  .timeline-line {
+    position: relative;
+    height: 4px;
+    background: var(--navy);
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .timeline-point {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
+  .timeline-label {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--navy);
+  }
+  .timeline-desc {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    text-align: center;
+    width: 110px;
+    color: #4a5568;
+  }
+  .timeline-zero {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--navy);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .sources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 15px;
+  }
+  .source-card {
+    background: #f8fafc;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    padding: 15px;
+  }
+  .source-card h4 {
+    margin-top: 0;
+    color: var(--navy);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 6px;
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти до змісту</a>
@@ -77,7 +155,7 @@
     <span class="grade-num">5</span>
     <div>
       <h1 style="color:#fff;margin-bottom:4px;">Всесвітня історія — 5 клас</h1>
-      <p style="margin:0;color:#E7DEC2;">Вступ до історії</p>
+      <p style="margin:0;color:#E7DEC2;">Вступ до історії (курс «Досліджуємо історію і суспільство»)</p>
     </div>
   </div>
 
@@ -85,15 +163,166 @@
 
   <div class="grid cols-4" style="margin-top:10px;">
     <div class="card"><span class="card-icon">📄</span><h3>Опорні конспекти</h3><p>Стислий виклад теми, схеми, дати та терміни для швидкого повторення.</p></div>
-<div class="card"><span class="card-icon">🎞️</span><h3>Відеоуроки</h3><p>Авторські відеопояснення теми — доступні на YouTube-каналі вчителя.</p></div>
-<div class="card"><span class="card-icon">🧩</span><h3>Практичні завдання</h3><p>Робота з джерелами, контурними картами, документами.</p></div>
-<div class="card"><span class="card-icon">✅</span><h3>Тестові завдання</h3><p>Завдання у форматі НМТ/ДПА для самоперевірки та закріплення.</p></div>
+    <div class="card"><span class="card-icon">🎞️</span><h3>Відеоуроки</h3><p>Авторські відеопояснення теми — доступні на YouTube-каналі вчителя.</p></div>
+    <div class="card"><span class="card-icon">🧩</span><h3>Практичні завдання</h3><p>Робота з джерелами, контурними картами, документами.</p></div>
+    <div class="card"><span class="card-icon">✅</span><h3>Тестові завдання</h3><p>Завдання у форматі НМТ/ДПА для самоперевірки та закріплення.</p></div>
   </div>
 
-  <div class="placeholder-box" style="margin-top:26px;">
-    📥 Матеріали цього розділу поповнюються поступово. Незабаром тут з'являться презентації,
-    відеоуроки та завдання для 5 класу. Стежте за оновленнями!
-  </div>
+  <!-- РОЗДІЛ 1: ІСТОРІЯ ТА ІСТОРІКИ -->
+  <section style="margin-top:26px;">
+    <h2>🧠 Перші уявлення про історичну науку</h2>
+    <p style="line-height:1.6;">
+      <strong>Історія</strong> — це наука, що вивчає минуле людства на основі речових, писемних та усних пам'яток. Вона допомагає нам зрозуміти, як формувалося сучасне суспільство, та уникати помилок у майбутньому.
+    </p>
+
+    <div style="overflow-x:auto; margin-top:15px;">
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:var(--navy); color:#fff; text-align:left;">
+            <th style="padding:10px; border:1px solid #ccc;">Історик / Видатна постать</th>
+            <th style="padding:10px; border:1px solid #ccc;">Титул / Походження</th>
+            <th style="padding:10px; border:1px solid #ccc;">Основна ідея та внесок у науку</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:8px; border:1px solid #ccc;"><strong>Геродот</strong> (V ст. до н. е.)</td>
+            <td style="padding:8px; border:1px solid #ccc;">«Батько історії» (Стародавня Греція)</td>
+            <td style="padding:8px; border:1px solid #ccc;">Першим описав історію народів і воєн, зокрема залишив найдавніший писемний опис земель України та скіфів у своїй праці «Історія».</td>
+          </tr>
+          <tr style="background:#f9f9f9;">
+            <td style="padding:8px; border:1px solid #ccc;"><strong>Нестор Літописець</strong> (XI–XII ст.)</td>
+            <td style="padding:8px; border:1px solid #ccc;">Чернець Києво-Печерського монастиря</td>
+            <td style="padding:8px; border:1px solid #ccc;">Укладач знаменитого літопису «Повість минулих літ». Обґрунтував витоки та значення києворуської держави («Звідки пішла Руська земля...»).</td>
+          </tr>
+          <tr>
+            <td style="padding:8px; border:1px solid #ccc;"><strong>Михайло Грушевський</strong> (1866–1934)</td>
+            <td style="padding:8px; border:1px solid #ccc;">Видатний український історик та державний діяч</td>
+            <td style="padding:8px; border:1px solid #ccc;">Написав монументальну 10-томну «Історію України-Руси», довівши безперервність розвитку українського народу від найдавніших часів.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- РОЗДІЛ 2: ВИДИ ІСТОРІЧНИХ ДЖЕРЕЛ -->
+  <section style="margin-top:26px;">
+    <h2>🔍 Історичні джерела: як ми дізнаємося про минуле</h2>
+    <p style="line-height:1.6;">Все, що залишили по собі люди минулих епох і що дає змогу дослідити історію, називається <strong>історичним джерелом</strong>.</p>
+
+    <div class="sources-grid">
+      <div class="source-card">
+        <h4>🏺 Речові</h4>
+        <p style="font-size:0.9rem; line-height:1.5;">Предмети матеріальної культури, знайдені під час археологічних розкопок:</p>
+        <ul style="font-size:0.85rem; padding-left:15px; margin:0;">
+          <li>Знаряддя праці та зброя</li>
+          <li>Посуд, прикраси, одяг</li>
+          <li>Залишки будівель, монети</li>
+        </ul>
+      </div>
+
+      <div class="source-card">
+        <h4>📜 Писемні</h4>
+        <p style="font-size:0.9rem; line-height:1.5;">Будь-які написи та тексти, збережені на різних матеріалах:</p>
+        <ul style="font-size:0.85rem; padding-left:15px; margin:0;">
+          <li>Глиняні таблички, папіруси</li>
+          <li>Літописи, берестяні грамоти</li>
+          <li>Листи, щоденники, закони</li>
+        </ul>
+      </div>
+
+      <div class="source-card">
+        <h4>🗣️ Усні</h4>
+        <p style="font-size:0.9rem; line-height:1.5;">Словесна творчість, що передавалася від покоління до покоління:</p>
+        <ul style="font-size:0.85rem; padding-left:15px; margin:0;">
+          <li>Міфи, казки, легенди</li>
+          <li>Народні пісні, думи</li>
+          <li>Прислів'я та перекази</li>
+        </ul>
+      </div>
+
+      <div class="source-card">
+        <h4>📷 Етнографічні та візуальні</h4>
+        <p style="font-size:0.9rem; line-height:1.5;">Побутові традиції та зорові образи:</p>
+        <ul style="font-size:0.85rem; padding-left:15px; margin:0;">
+          <li>Обряди, звичаї, традиції</li>
+          <li>Настінні малюнки, картини</li>
+          <li>Фотографії, кінохроніка</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- РОЗДІЛ 3: ЛІЧБА ЧАСУ ТА ЛІНІЯ ЧАСУ -->
+  <section style="margin-top:26px;">
+    <h2>⏳ Лічба часу в історії (Хронологія)</h2>
+    <p style="line-height:1.6;">
+      <strong>Хронологія</strong> — наука про вимірювання та відлік часу. В історії відлік років ведеться від народження Ісуса Христа (наша ера — н. е.). Все, що відбулося до цієї події, належить до періоду <strong>до нашої ери (до н. е.)</strong>.
+    </p>
+
+    <div class="timeline-container">
+      <h3 style="margin-top:0; color:var(--navy); text-align:center;">Схематична Лінія Часу</h3>
+      
+      <div class="timeline-line">
+        <div class="timeline-zero">Народження Христа (1 рік н. е.)</div>
+        
+        <div class="timeline-point" style="margin-left: 10%;">
+          <span class="timeline-label">V ст. до н. е.</span>
+          <span class="timeline-desc">Час Геродота</span>
+        </div>
+
+        <div class="timeline-point" style="margin-left: 20%;">
+          <span class="timeline-label">I ст. до н. е.</span>
+          <span class="timeline-desc">Кінець до н. е.</span>
+        </div>
+
+        <div class="timeline-point" style="margin-left: 30%;">
+          <span class="timeline-label">XI ст. н. е.</span>
+          <span class="timeline-desc">«Повість минулих літ»</span>
+        </div>
+
+        <div class="timeline-point" style="margin-left: 20%;">
+          <span class="timeline-label">XXI ст. н. е.</span>
+          <span class="timeline-desc">Сьогодення</span>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:#718096; text-align:center; margin-bottom:0;">
+        ⚠️ <strong>Запом'ятайте:</strong> Роки <em>до нашої ери</em> рахують у зворотному порядку (від більшого до меншого), а роки <em>нашої ери</em> — у прямому порядку.
+      </p>
+    </div>
+
+    <!-- Практичні задачі -->
+    <div class="card" style="margin-top:20px; border-left:4px solid var(--accent);">
+      <h3 style="margin-top:0; color:var(--navy);">🧮 Історичні хронологічні задачі (з розв'язками)</h3>
+      
+      <div style="margin-bottom:15px;">
+        <p style="margin-bottom:4px;"><strong>Задача 1 (в межах однієї ери):</strong></p>
+        <p style="margin-bottom:4px;"><em>Київський князь Ярослав Мудрий посів престол у 1019 році, а помер у 1054 році. Скільки років він правив?</em></p>
+        <p style="color:#2b6cb0; margin-top:0;"><strong>Розв'язок:</strong> 1054 − 1019 = 35 років.</p>
+      </div>
+
+      <hr style="border:none; border-top:1px solid #cbd5e0; margin:10px 0;">
+
+      <div>
+        <p style="margin-bottom:4px;"><strong>Задача 2 (через межу ер):</strong></p>
+        <p style="margin-bottom:4px;"><em>Римську республіку було засновано в 509 році до н. е. Скільки років минуло від цієї події до 2026 року?</em></p>
+        <p style="color:#2b6cb0; margin-top:0;"><strong>Розв'язок:</strong> 509 + 2026 − 1 = 2534 роки (при переході через межу ер роки додаються, -1 рік, бо в історичній шкалі немає нульового року).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЦІКАВО ЗНАТИ -->
+  <section style="margin-top:26px;">
+    <h2>💡 Досліджуємо та розвиваємося</h2>
+    <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:18px; border-radius:8px;">
+      <p style="margin-top:0; line-height:1.6;">
+        <strong>Археологія</strong> — це «детективна» галузь історії. Археологи викопують старожитності із землі, дбайливо очищають їх пензликами та залишками монет чи кераміки відновлюють точні картини життя давніх людей.
+      </p>
+      <p style="margin-bottom:0; line-height:1.6;">
+        <strong>Допоміжні історичні науки:</strong> Нумізматика (вивчає монети), Геральдика (вивчає герби), Сфрагістика (вивчає печатки), Епіграфіка (вивчає стародавні написи на твердих матеріалах).
+      </p>
+    </div>
+  </section>
 
   <div style="display:flex; justify-content:space-between; margin-top:30px; flex-wrap:wrap; gap:10px;">
     <div></div>
