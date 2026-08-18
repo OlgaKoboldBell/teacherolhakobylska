@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQSPRWHRCF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QQSPRWHRCF');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5388275141105129" crossorigin="anonymous"></script>
+<title>Підвищення кваліфікації та сертифікати — Ольга Кобильська</title>
+<meta name="description" content="Сертифікати, свідоцтва та підтвердження підвищення кваліфікації вчителя історії Ольги Кобильської: курси, вебінари, семінари, тренінги.">
+<meta name="keywords" content="підвищення кваліфікації вчителя, сертифікати Ольга Кобильська, курси для вчителів історії, самоосвіта педагога, вебінари НУШ">
+<meta name="author" content="Ольга Юріївна Кобильська">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="pidvyshchennya-kvalifikaciyi.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Підвищення кваліфікації та сертифікати — Ольга Кобильська">
+<meta property="og:description" content="Портфоліо сертифікатів та матеріалів підвищення кваліфікації вчителя громадянської та історичної освітньої галузі.">
+<meta property="og:image" content="certificate_1.jpg">
+<meta property="og:locale" content="uk_UA">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Компактна секція Hero */
+  .hero-compact {
+    padding: 20px 0 15px 0;
+    margin-bottom: 10px;
+  }
+  .hero-compact .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .hero-compact .hero-eyebrow {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #854d0e;
+    font-weight: 700;
+  }
+  .hero-compact h1 {
+    font-size: 2rem;
+    margin: 2px 0;
+    line-height: 1.2;
+  }
+  .hero-compact .subtitle {
+    font-size: 1rem;
+    color: #475569;
+    margin: 0;
+  }
+
+  /* Сітки зображень */
+  .grid-vertical {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .grid-compact {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .cert-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  .cert-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+  }
+  .cert-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .cert-caption {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    color: #475569;
+    text-align: center;
+    background: #f8fafc;
+    border-top: 1px solid #f1f5f9;
+  }
+  .hashtags-block {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f1f5f9;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  .hashtags-block span {
+    color: #0284c7;
+    font-weight: 600;
+    margin-right: 10px;
+  }
+
+  /* Модальне вікно для перегляду сертифіката у збільшеному розмірі */
+  .cert-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .cert-modal.active {
+    display: flex;
+  }
+  .cert-modal-content {
+    max-width: 85vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+  }
+  .cert-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1;
+  }
+  .cert-modal-close:hover {
+    color: #38bdf8;
+  }
+
+  @media (max-width: 768px) {
+    .grid-vertical {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .hero-compact h1 { font-size: 1.6rem; }
+    .hero-compact .subtitle { font-size: 0.95rem; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти до змісту</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <span class="seal">ОК</span>
+      <span class="brand-text">
+        <span class="name">Ольга Кобильська</span><br>
+        <span class="role">вчитель громадянської та історичної освітньої галузі</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Відкрити меню" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="Основна навігація">
+      <ul>
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="istoriya-ukrayiny.html">Історія України</a></li>
+        <li><a href="vsesvitnya-istoriya.html">Всесвітня історія</a></li>
+        <li><a href="pravoznavstvo.html">Правознавство</a></li>
+        <li><a href="gromadyanska-osvita.html">Громадянська освіта</a></li>
+        <li><a href="doslidzhuyemo-istoriyu.html">Досліджуємо історію і суспільство</a></li>
+        <li><a href="inklyuzyvne-navchannya.html">Інклюзивне навчання</a></li>
+        <li><a href="karta-ukrayiny.html">Інтерактивна карта</a></li>
+        <li><a href="podorozhi.html">Подорожі</a></li>
+        <li><a href="cikavo-znaty.html">Цікаво знати</a></li>
+        <li><a href="pidgotovka-do-nmt.html">Підготовка до НМТ</a></li>
+        <li><a href="otsinyuvannya.html">Оцінювання</a></li>
+        <li><a href="dosyagnennya-uchniv.html">Досягнення учнів</a></li>
+        <li><a href="cyfrovi-tehnologiyi.html">Цифрові технології</a></li>
+        <li><a href="korysni-resursy.html">Корисні ресурси</a></li>
+        <li><a href="kontakty.html">Контакти</a></li>
+        <li><a href="sertyfikaciya.html">Сертифікація</a></li>
+        <li><a href="pidvyshchennya-kvalifikaciyi.html">Підвищення кваліфікації</a></li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero hero-compact">
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Самоосвіта та розвиток</span>
+      <h1>Підвищення кваліфікації</h1>
+      <p class="subtitle">Постійне вдосконалення майстерності — запорука якісної та сучасної освіти</p>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="timeline-rule"></div></div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title"><span class="num">01</span><h2>Важливість професійного зростання</h2></div>
+    <p class="lede">Сучасний світ та освітній простір змінюються надзвичайно швидко. Для вчителя навчання впродовж життя (Lifelong Learning) — це не просто нормативна вимога, а внутрішня потреба та професійна філософія.</p>
+    <p>Постійна участь у курсах, семінарах, вебінарах та тренінгах дозволяє опановувати новітні методики викладання, ефективно інтегрувати цифрові інструменти й штучний інтелект у навчальний процес, розвивати навички інклюзивного навчання та надавати учням актуальні й глибокі знання.</p>
+  </div>
+</section>
+
+<div class="container"><div class="timeline-rule"></div></div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title"><span class="num">02</span><h2>Ключові сертифікати (вертикальний формат)</h2></div>
+    <p>Основні програми підвищення кваліфікації та тривалі методичні курси (натисніть для збільшення):</p>
+    
+    <div class="grid-vertical">
+      <div class="cert-card">
+        <img src="certificate_1.jpg" alt="Сертифікат підвищення кваліфікації 1" loading="lazy">
+        <div class="cert-caption">Сертифікат №1</div>
+      </div>
+      <div class="cert-card">
+        <img src="certificate_2.jpg" alt="Сертифікат підвищення кваліфікації 2" loading="lazy">
+        <div class="cert-caption">Сертифікат №2</div>
+      </div>
+      <div class="cert-card">
+        <img src="certificate_3.jpg" alt="Сертифікат підвищення кваліфікації 3" loading="lazy">
+        <div class="cert-caption">Сертифікат №3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="timeline-rule"></div></div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title"><span class="num">03</span><h2>Сертифікати за участь у вебінарах, семінарах та тренінгах</h2></div>
+    <p>Компактний огляд підтверджуючих документів про участь у фахових освітніх заходах:</p>
+    
+    <div class="grid-compact">
+      <div class="cert-card">
+        <img src="certificate_4.jpg" alt="Сертифікат 4" loading="lazy">
+        <div class="cert-caption">Сертифікат №4</div>
+      </div>
+      <div class="cert-card">
+        <img src="certificate_5.jpg" alt="Сертифікат 5" loading="lazy">
+        <div class="cert-caption">Сертифікат №5</div>
+      </div>
+      <div class="cert-card">
+        <img src="certificate_6.jpg" alt="Сертифікат 6" loading="lazy">
+        <div class="cert-caption">Сертифікат №6</div>
+      </div>
+      <div class="cert-card">
+        <img src="certificate_7.jpg" alt="Сертифікат 7" loading="lazy">
+        <div class="cert-caption">Сертифікат №7</div>
+      </div>
+      <div class="cert-card">
+        <img src="certificate_8.jpg" alt="Сертифікат 8" loading="lazy">
+        <div class="cert-caption">Сертифікат №8</div>
+      </div>
+      <div class="cert-card">
+        <img src="certificate_9.jpg" alt="Сертифікат 9" loading="lazy">
+        <div class="cert-caption">Сертифікат №9</div>
+      </div>
+      <div class="cert-card">
+        <img src="certificate_10.jpg" alt="Сертифікат 10" loading="lazy">
+        <div class="cert-caption">Сертифікат №10</div>
+      </div>
+      <div class="cert-card">
+        <img src="certificate_11.jpg" alt="Сертифікат 11" loading="lazy">
+        <div class="cert-caption">Сертифікат №11</div>
+      </div>
+    </div>
+
+    <div class="hashtags-block">
+      <span>#ПідвищенняКваліфікації</span> <span>#Самоосвіта</span> <span>#КурсиВчителів</span> <span>#Вебінари</span> <span>#ОсвітнійРозвиток</span> <span>#НУШ</span> <span>#ПедагогічнаМайстерність</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Модальне вікно для перегляду сертифіката -->
+<div class="cert-modal" id="certModal">
+  <span class="cert-modal-close" id="certModalClose">&times;</span>
+  <img class="cert-modal-content" id="certModalImg" src="" alt="Збільшений сертифікат">
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="cols">
+      <div>
+        <h4>Ольга Кобильська</h4>
+        <p style="max-width:34ch;font-size:.9rem;">КЗ «Ліцей №4 «Обрій» Світловодської міської ради» — вчитель-методист вищої категорії.</p>
+      </div>
+      <div>
+        <h4>Розділи</h4>
+        <ul>
+          <li><a href="istoriya-ukrayiny.html">Історія України</a></li>
+          <li><a href="vsesvitnya-istoriya.html">Всесвітня історія</a></li>
+          <li><a href="pravoznavstvo.html">Правознавство</a></li>
+          <li><a href="gromadyanska-osvita.html">Громадянська освіта</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Матеріали</h4>
+        <ul>
+          <li><a href="karta-ukrayiny.html">Інтерактивна карта</a></li>
+          <li><a href="pidgotovka-do-nmt.html">Підготовка до НМТ</a></li>
+          <li><a href="korysni-resursy.html">Корисні ресурси</a></li>
+          <li><a href="otsinyuvannya.html">Оцінювання</a></li>
+          <li><a href="sertyfikaciya.html">Сертифікація</a></li>
+          <li><a href="pidvyshchennya-kvalifikaciyi.html">Підвищення кваліфікації</a></li>
+      
+        </ul>
+      </div>
+      <div>
+        <h4>Контакти</h4>
+        <ul>
+          <li><a href="kontakty.html">Написати вчителю</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="footer-bottom">© Ольга Кобильська — сайт вчителя громадянської та історичної освітньої галузі.</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Скрипт відкриття зображення у збільшеному модальному вікні
+  document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('certModal');
+    const modalImg = document.getElementById('certModalImg');
+    const closeBtn = document.getElementById('certModalClose');
+    const certCards = document.querySelectorAll('.cert-card');
+
+    certCards.forEach(card => {
+      card.addEventListener('click', function() {
+        const img = this.querySelector('img');
+        if (img) {
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+          modal.classList.add('active');
+        }
+      });
+    });
+
+    // Закриття модального вікна по кліку збоку (на темне тло)
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal || e.target === closeBtn) {
+        modal.classList.remove('active');
+      }
+    });
+
+    // Закриття по клавіші Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
